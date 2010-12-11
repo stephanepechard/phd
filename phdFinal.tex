@@ -35,11 +35,10 @@
 
 %% Packages primordiaux
 \usepackage[utf8]{inputenc}													% codage d'entrée (tout le document en dépend)
-\usepackage[T1]{fontenc}													% codage de la fonte
-% \shutup \usepackage{fourier} \youcanspeak									% pour les maths (avec suppression des warnings) !! À mettre avant lmodern ou garamond !!
-% \usepackage{agaramondpro}													% la famille de fonte dépend du codage
-\usepackage{lmodern}
-% \usepackage[kerning=true,babel=true]{microtype}
+\usepackage[LY1]{fontenc}													% codage de la fonte
+\shutup \usepackage{fourier} \youcanspeak									% pour les maths (avec suppression des warnings) !! À mettre avant lmodern ou garamond !!
+\usepackage{agaramondpro}													% la famille de fonte dépend du codage
+\usepackage[kerning=true,babel=true]{microtype}
 \usepackage{textcomp}														% dépend de la famille de la fonte
 \usepackage{setspace}														% interlignage
 \usepackage[pdftex, headheight=15.91pt]{geometry}		% taille du papier (peut dépendre de l'interlignage par l'option lines=... , textheight=22cm
@@ -54,7 +53,6 @@
 \usepackage{array}															% tableaux en mode math
 \usepackage{multirow}														% pour les tableaux
 \usepackage{mathtools}														% amélioration de amsmath
-\usepackage{stmaryrd}
 % déco
 \usepackage{lettrine}														% lettrine en tête de chapitre
 \renewcommand{\LettrineFontHook}{\color[gray]{0.6}} 						% normalement le même gris que les numéros de quotchap
@@ -137,8 +135,8 @@
 
 %%% après hyperref
 %% glossaire
-% \usepackage[number=none, hypertoc=true, style=list]{glossary} % style=altlist !!!! à placer après hyperref !!!!
-% \makeglossary
+\usepackage[number=none, hypertoc=true, style=list]{glossary} % style=altlist !!!! à placer après hyperref !!!!
+\makeglossary
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Commandes
@@ -279,47 +277,47 @@
 
 %%% partie 1 - Partie « subjective »
 \part[Évaluation subjective de la qualité visuelle \texorpdfstring{\\}{}en télévision haute définition]{Évaluation subjective de la qualité visuelle en télévision haute définition}
-% \include{1-testsub}
-% \include{2-HDContexteQual}
-% \include{3-evalImpactSysDegsurQual}
-% \include{bilan1}
-%
-% %%% partie 2 - Partie « objective »
-% \part[Critères objectifs de qualité vidéo \texorpdfstring{\\}{}en télévision haute définition]{Critères objectifs de qualité vidéo \\en télévision haute définition}
-% \include{4-metriques}
-% \include{5-eval}
-% \include{6-modQualVid}
-% \include{7-modClassif}
-%
-% %%% conclusion
-% \include{conclusion}
-%
-%
-% % redéfinition du style pour la dernière partie dans la table des matières
-% \titlecontents{part}													% label concerné
-% [3pc]																		% espace à la marge gauche
-% {\addvspace{1.5pc}\filcenter\hrule height 1pt}		% formatage global du label (avant)
-% {\Large\textbf}															% quand il y a un numéro
-% {\Large\textbf}															% quand il n'y en a pas
-% {}																			% séparateur (\titlerule*[1pc]{.}) et numéro de la page (\contentspage)
-% [\hrule height 1pt\addvspace{.5pc}]						% ce qui se passe après
-%
-%
-% %%% annexes
-% \part*{Annexes}
-% \addcontentsline{toc}{part}{Annexes}
-% \appendix
-% \input{a-base}
-% \input{b-transfoCouleur}
-%
-%
-% %%% glossaire
-% \renewcommand{\glossaryname}{Acronymes et abréviations}
-% \renewcommand{\shortglossaryname}{Acronymes et abréviations}
-% % \renewcommand{\glossarypreamble}{Les acronymes et autres abréviations présents dans cet ouvrage trouvent leurs expansions verbeuses dans ces quelques pages.\par}
-% % \renewcommand{\entryname}{Acronyme}
-% \printglossary
-%
+\include{1-testsub}
+\include{2-HDContexteQual}
+\include{3-evalImpactSysDegsurQual}
+\include{bilan1}
+
+%%% partie 2 - Partie « objective »
+\part[Critères objectifs de qualité vidéo \texorpdfstring{\\}{}en télévision haute définition]{Critères objectifs de qualité vidéo \\en télévision haute définition}
+\include{4-metriques}
+\include{5-eval}
+\include{6-modQualVid}
+\include{7-modClassif}
+
+%%% conclusion
+\include{conclusion}
+
+
+% redéfinition du style pour la dernière partie dans la table des matières
+\titlecontents{part}													% label concerné
+[3pc]																		% espace à la marge gauche
+{\addvspace{1.5pc}\filcenter\hrule height 1pt}		% formatage global du label (avant)
+{\Large\textbf}															% quand il y a un numéro
+{\Large\textbf}															% quand il n'y en a pas
+{}																			% séparateur (\titlerule*[1pc]{.}) et numéro de la page (\contentspage)
+[\hrule height 1pt\addvspace{.5pc}]						% ce qui se passe après
+
+
+%%% annexes
+\part*{Annexes}
+\addcontentsline{toc}{part}{Annexes}
+\appendix
+\input{a-base}
+\input{b-transfoCouleur}
+
+
+%%% glossaire
+\renewcommand{\glossaryname}{Acronymes et abréviations}
+\renewcommand{\shortglossaryname}{Acronymes et abréviations}
+% \renewcommand{\glossarypreamble}{Les acronymes et autres abréviations présents dans cet ouvrage trouvent leurs expansions verbeuses dans ces quelques pages.\par}
+% \renewcommand{\entryname}{Acronyme}
+\printglossary
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% postambule
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

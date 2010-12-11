@@ -1,0 +1,27 @@
+\shorthandoff{:} % debug pgf
+\begin{tikzpicture}[yscale=0.05,xscale=0.26,domain=0:20]
+	\draw[->] (0,0) -- (21,0) node[right] {$d$};
+	\draw[->] (0,0) -- (0,105) node[above] {$Q$};
+	\node[below] {0};
+	\draw (5,1) -- (5,-1) node[below] {5};
+	\draw (10,1) -- (10,-1) node[below] {10};
+	\draw (15,1) -- (15,-1) node[below] {15};
+	\draw (20,1) -- (20,-1) node[below] {20};
+	\draw (-0.1,20) -- (0.1,20) node[left] {20};
+	\draw (-0.1,40) -- (0.1,40) node[left] {40};
+	\draw (-0.1,60) -- (0.1,60) node[left] {60};
+	\draw (-0.1,80) -- (0.1,80) node[left] {80};
+	\draw (-0.1,100) -- (0.1,100) node[left] {100};
+
+	\draw[loosely dashed]							plot[id=x] function{100*(1-exp(-((x)/2)))};
+	\draw[densely dotted,domain=2:20]	plot[id=x] function{100*(1-exp(-((x-2)/2)))};
+	\draw[domain=5:20]							plot[id=x] function{100*(1-exp(-((x-5)/2)))};
+	\draw[dashed,domain=10:20]				plot[id=x] function{100*(1-exp(-((x-10)/2)))};
+	\draw (18,30) node[legende, text width=6.8em, minimum height = 1em, text badly ragged] {
+		\tikz \draw[loosely dashed] (0pt,0pt) -- (10pt,0pt); $\offset =$ 1
+		\tikz \draw[densely dotted] (0pt,0pt) -- (10pt,0pt); $\offset =$ 2
+		\tikz \draw (0pt,0pt) -- (10pt,0pt); $\offset =$ 5
+		\tikz \draw[dashed] (0pt,0pt) -- (10pt,0pt); $\offset =$ 10
+	};
+\end{tikzpicture}
+\shorthandon{:}

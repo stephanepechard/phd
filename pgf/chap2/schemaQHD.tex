@@ -1,0 +1,35 @@
+% schéma de l'obtention des séquences au format QHD
+\begin{tikzpicture}[node distance = 2.2cm, text centered]
+% Place nodes
+\node (tvhd) {TVHD};
+\node[action, right of=tvhd, text width=4em] (codage) {codage H.264};
+\node[action, right of=codage, text width=4em] (décodage) {décodage H.264};
+\node[right of=décodage, text width=4em] (tvhdCode) {TVHD codée};
+\node[action, below of=tvhd, text width=5em, node distance = 1.25cm] (filtre) {filtrage demi-bande};
+\node[action, below of=filtre, text width=2em, node distance = 1.25cm] (down) {$\downarrow$ 2};
+\node[below of=down, node distance = 1cm] (qhd) {};
+\node[below of=qhd, node distance = 0.25cm] {QHD};
+\node[action, right of=qhd, text width=4em] (codageQHD) {codage H.264};
+\node[action, right of=codageQHD, text width=4em] (décodageQHD) {décodage H.264};
+\node[right of=décodageQHD, text width=4em, node distance = 1.5cm] {QHD codée};
+\node[action, right of=décodageQHD, text width=4em, node distance = 3cm] (insertion) {insertion dans TVHD};
+\node[right of=insertion, text width=5em, node distance = 2.8cm] (qhdINtvhd) {QHD dans TVHD};
+\node[action, above of=qhdINtvhd, text width=4em, node distance = 2cm] (pref) {test de préférence};
+\node[right of=pref, node distance = 2.5cm] (mesure) {préférence};
+
+% Draw edges
+\path [fleche] (tvhd) -- (codage);
+\path [fleche] (codage) -- (décodage);
+\path [fleche] (décodage) -- (tvhdCode);
+
+\path [fleche] (tvhd) -- (filtre);
+\path [fleche] (filtre) -- (down);
+\path [fleche] (down) |- (codageQHD);
+\path [fleche] (codageQHD) -- (décodageQHD);
+\path [fleche] (décodageQHD) -- (insertion);
+\path [fleche] (insertion) -- (qhdINtvhd);
+\path [fleche] (qhdINtvhd) -- (pref);
+\path [fleche] (tvhdCode) -| (pref);
+\path [fleche] (pref) -- (mesure);
+
+\end{tikzpicture}

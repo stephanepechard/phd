@@ -1,0 +1,18 @@
+% schéma global de la métrique de qualité vidéo avec référence réduite basée sur la répartition du débit
+
+% \begin{tikzpicture}[node distance = 3.5cm, auto]
+% Place nodes
+	\node[text width=5em] (seqRef) {séquence de référence};
+	\node[action, right of=seqRef, text width=3cm] (classif) {analyse spatio-temporelle du contenu};
+	\node[action, right of=classif, text width=2.5cm, node distance = 5cm] (combi) {prédiction des paramètres du modèle};
+	\node[below of=seqRef, node distance = 3cm, text width=5em] (belowRef) {séquence dégradée};
+	\node[below of=classif, node distance = 3cm] (belowExtract) {};
+	\node[action, right of=belowExtract, text width=5em, node distance = 5cm] (modele) {modèle de qualité};
+	\node[text width=5em, right of=modele] (mos) {note objective de qualité $Q$};
+% Draw edges
+	\path[fleche] (seqRef) -- (classif);
+	\path[fleche] (classif) -- (combi) node[pos=0.5] {$P_i^S, M^S$};
+	\path[fleche] (combi) -- (modele) node[pos=0.5,right] {$\offset, \slope$};
+	\path[fleche] (belowRef) -- (modele) node[pos=0.5] {débit $B$};
+	\path[fleche] (modele) -- (mos);
+% \end{tikzpicture}

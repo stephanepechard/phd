@@ -1,0 +1,16 @@
+% schéma du filtrage temporel à court terme
+
+% Place nodes
+\node[text width=2em] (d) {};
+\node[action,right of=d,text width=2.4cm,node distance=2.4cm] (filtre) {fonction de réaction à l'évolution du signal};
+\node[right of=filtre] (dChap) {};
+\node[action,right of=dChap,text width=2.5cm] (filtreOrdre) {fonction de construction du jugement de courte durée};
+\node[right of=filtreOrdre] (dBar) {};
+\node[action,right of=dBar] (fonction) {fonction d'oubli};
+\node[right of=fonction, text width=1em] (fin) {};
+
+% Draw edges
+\path[fleche] (d) node[above] {$D(T)$}	-- (filtre);
+\path[fleche] (filtre) 		-- (filtreOrdre) 	node[above,pos=0.5] {$\hat{D}(T)$};
+\path[fleche] (filtreOrdre) -- (fonction) 		node[above,pos=0.5] {$\tilde{D}(T')$};
+\path[fleche] (fonction) 	-- (fin) 			node[above] {$\NO_f$};

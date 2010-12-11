@@ -1,0 +1,20 @@
+% \begin{tikzpicture}[text centered]
+% Place nodes
+	\node[text width=2cm] (ref) {séquence originale};
+	\node[action, below of=ref, text width=2.5cm, node distance = 2.4cm] (couleur) {décomposition dans un espace de couleurs antagonistes};
+	\node[below of=couleur, text width=2cm, node distance = 2.4cm] (deg) {séquence dégradée};
+	\node[action, right of=couleur, text width=2cm] (csf) {fonction de sensibilité aux contrastes};
+	\node[action, right of=csf, text width=2.5cm] (canaux) {décomposition en canaux perceptuels};
+	\node[action, right of=canaux, text width=2cm] (masq) {fonction de masquage};
+	\node[action, right of=masq, node distance = 2cm] (cumul) {cumul};
+	\node[right of=cumul, node distance = 1.5cm] (note) {note};
+
+% Draw edges
+	\path[fleche] (ref) -- (couleur);
+	\path[fleche] (deg) -- (couleur);
+	\path[fleche] (couleur) -- (csf);
+	\path[fleche] (csf) -- (canaux);
+	\path[fleche] (canaux) -- (masq);
+	\path[fleche] (masq) -- (cumul);
+	\path[fleche] (cumul) -- (note);
+% \end{tikzpicture}

@@ -1,0 +1,41 @@
+% \begin{tikzpicture}[text depth=1pt]
+	\node (ec) at (8.2,-0.5) {};
+	\node (ec2) at (8.2,-6) {};
+	\node (tmp) at (10,-5) {};
+	\path[draw] (ec) -| (tmp) |- (ec2);
+	\node[legende,dashed,text width=4.4cm, minimum height=2cm] at (7,-0.5) {};
+	\node[legende,dashed,text width=4.4cm, minimum height=1cm] at (7,-6) {};
+	\node at (8.2,-0.5) {\textbf{échelle catégorielle}};
+	\node at (8.2,-6) {\textbf{échelle catégorielle}};
+
+	\node[legende,dashed,text width=4.4cm, minimum height=3.8cm] at (7,-3.5) {};
+	\node at (8.2,-3.5) {\textbf{échelle continue}};
+
+	\node[action,text width=2.5cm] (m) at (0,0)			{évaluation de\dots};
+	\node[action] (g) at (3,0)				{gêne};
+	\node[action] (dsis) at (6,0)			{DSIS};
+	
+	\node[action] (q) at (3,-1)			{qualité};
+	\node[action] (acr) at (6,-1)			{ACR};
+	\node[action] (sscqe) at (6,-2)		{SSCQE};
+	\node[action] (dscqs) at (6,-3)		{DSCQS};
+	\node[action] (samviq) at (6,-4)	{SAMVIQ};
+
+	\node[action] (p) at (3,-5)			{préférence};
+	\node[action] (sdsce) at (6,-5)		{SDSCE};
+	\node[action] (p2) at (6,-6)			{SCACJ};
+
+	\path[draw] (m) -- (g);
+	\path[draw] (m) |- (q);
+	\path[draw] (m) |- (p);
+
+	\path[draw] (g) -- (dsis);
+	\path[draw] (q) -- (acr);
+	\path[draw] (q) |- (dscqs);
+	\path[draw] (q) |- (sscqe);
+	\path[draw] (q) |- (samviq);
+	\path[draw] (p) -- (sdsce);
+	\path[draw] (p) |- (p2);
+	\path[draw] (10,-4) -- (10,-6);
+
+% \end{tikzpicture}

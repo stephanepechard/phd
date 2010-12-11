@@ -1,0 +1,32 @@
+% schéma global du modèle de qualité vidéo basé sur le calcul de distorsions intra-tubes
+
+% \begin{tikzpicture}[node distance = 3cm, auto]
+
+% TODO rajouter la transformation en luminance perceptuelle, garder que la segmentation en tubes, virer la classification
+
+% Place nodes
+% \node () {séquence de référence};
+\node [text width=6em, node distance = 3cm] (seqRef) {séquence de référence};
+\node [action, below of=seqRef, text width=6em] (transLumRef) {transformation en luminances perceptuelles};
+\node [action, text width=7em, right of=seqRef, node distance = 4cm] (segmentation) {segmentation spatio-temporelle};
+\node [right of=segmentation, text width=6em, node distance = 4cm] (seqDeg) {séquence dégradée};
+\node [action, below of=seqDeg, text width=6em] (transLumDeg) {transformation en luminances perceptuelles};
+\node [action, below of=transLumRef, text width=6em, node distance = 2cm] (calculRef) {calcul de caractéristiques primaires};
+\node [action, below of=transLumDeg, text width=6em, node distance = 2cm] (calculDeg) {calcul de caractéristiques primaires};
+\node [action, below of=segmentation, text width=7em, node distance = 5.5cm] (calculDist) {calcul de différences entre caractéristiques};
+% \node [action, below of=calculDist, node distance = 2cm, text width=7em] (cumulIntraTroncon) {modélisation des histogrammes des distances};
+\node [action, below of=calculDist, text width=7em, node distance = 2cm] (cumulTemp) {cumul temporel};
+\node [right of=cumulTemp, text width=1.5cm, node distance = 3cm] (note) {note de qualité visuelle};
+
+% % Draw edges
+\path [fleche] (seqRef) -- (segmentation);
+\path [fleche] (seqRef) -- (transLumRef);
+\path [fleche] (transLumRef) -- (calculRef);
+\path [fleche] (seqDeg) -- (transLumDeg);
+\path [fleche] (transLumDeg) -- (calculDeg);
+\path [fleche] (segmentation) |- (calculRef) node[right=-0.1cm, pos=0.2] {coordonnées des tubes};
+\path [fleche] (segmentation) |- (calculDeg);
+\path [fleche] (calculRef) |- (calculDist);
+\path [fleche] (calculDeg) |- (calculDist);
+\path [fleche] (calculDist) -- (cumulTemp);
+\path [fleche] (cumulTemp) -- (note);

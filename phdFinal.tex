@@ -1,0 +1,348 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%% Auteur : Stéphane Péchard - stephane.pechard@univ-nantes.fr
+%%% Fichier : phd.tex - ma thèse (version finale)
+%%% Version : 0.1
+%%% Date : 2006/03/27 (début)
+%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\RequirePackage[final]{optional}
+% note		affichage des notes en bas de page
+% nofinal	enlève les trucs de la version finale
+% final		ajoute tous les flonflons pour la version finale
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Déclaration
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper,frenchb,pdftex,11pt,twoside,openright]{book} %\raggedbottom% version finale
+\input{makeat} % bidouillages en tout genre
+
+
+% \includeonly{a-base}
+% introduction, 0-contextePbTVHD, 1-testsub, 2-HDContexteQual, 3-evalImpactSysDegsurQual, 4-metriques, 5-eval, 6-modQualVid, 7-modClassif, a-base, b-transfoCouleur, conclusion, publications
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Packages de programmation
+% \usepackage{ifpdf}
+% \usepackage{etex}
+% \usepackage{calc}
+% \usepackage{ifthen}
+% \usepackage{ifmtarg}
+
+%% Packages primordiaux
+\usepackage[utf8]{inputenc}													% codage d'entrée (tout le document en dépend)
+\usepackage[T1]{fontenc}													% codage de la fonte
+% \shutup \usepackage{fourier} \youcanspeak									% pour les maths (avec suppression des warnings) !! À mettre avant lmodern ou garamond !!
+% \usepackage{agaramondpro}													% la famille de fonte dépend du codage
+\usepackage{lmodern}
+% \usepackage[kerning=true,babel=true]{microtype}
+\usepackage{textcomp}														% dépend de la famille de la fonte
+\usepackage{setspace}														% interlignage
+\usepackage[pdftex, headheight=15.91pt]{geometry}		% taille du papier (peut dépendre de l'interlignage par l'option lines=... , textheight=22cm
+\usepackage{fancyhdr}														% dépend du papier
+% \usepackage{floatrow}
+
+%% Zone floue
+% math
+\usepackage{amsmath}   														% math
+\usepackage{amssymb}														% symboles
+\usepackage{amsfonts}														% fontes
+\usepackage{array}															% tableaux en mode math
+\usepackage{multirow}														% pour les tableaux
+\usepackage{mathtools}														% amélioration de amsmath
+\usepackage{stmaryrd}
+% déco
+\usepackage{lettrine}														% lettrine en tête de chapitre
+\renewcommand{\LettrineFontHook}{\color[gray]{0.6}} 						% normalement le même gris que les numéros de quotchap
+\usepackage{tikz}															% jolis graphiques ;-)
+\usetikzlibrary{arrows,patterns,plotmarks,backgrounds,shapes,shadows}		% librairies
+% layout
+\usepackage[center, labelsep=endash]{caption}								% avant subfig
+\usepackage{subfig}															% plusieurs figures en une seule (remplace subfigure)
+\usepackage{pdfpages}														% inclusion de pdf
+\usepackage{titlesec}
+\usepackage{wrapfig}														% pour insérer des images au long
+\usepackage[nottoc]{tocbibind}
+\usepackage{colortbl}
+\usepackage{booktabs}
+\setlength{\heavyrulewidth }{0.2em}
+% \usepackage{titletoc}
+% \usepackage{makeidx}
+% \usepackage{index}
+% \usepackage{float}
+% \usepackage{fancyvrb}
+
+% utile
+% \usepackage{shorttoc}											% table des matières réduite TODO problème avec titletoc ?
+\usepackage{lastpage}											% permet de connaitre le numéro de la dernière page
+% \usepackage{fancybox}											% des boiboites
+\usepackage{eurosym}											% \eurologo (de fourier)
+% \usepackage{listings}											% affichage de code
+% \usepackage{lipsum}
+% \usepackage{verbatim}
+% \usepackage{url}
+\usepackage[utopia]{quotchap}									% affiche une citation à chaque chapitre (change aussi l'allure de l'en-tête de chapitre)
+% \renewcommand{\chapnumfont}{\usefont{LY1}{AGaramondPro}{b}{n}\fontsize{100}{130}\selectfont\color{chaptergrey}}
+
+
+
+%% nomenclature (liste des symboles)
+% \usepackage[intoc, french, noprefix]{nomencl}
+% \renewcommand{\nomname}{Système de notation}
+% \renewcommand{\nompreamble}{Voici le système de notation utilisé dans ce document.}
+%
+% \renewcommand{\nomgroup}[1]{%
+% \item[]\hspace*{-\leftmargin}%
+% \rule[2pt]{0.45\linewidth}{1pt}%
+% \hfill
+% \ifthenelse{\equal{#1}{S}}{\textbf{Symboles}}
+% {\ifthenelse{\equal{#1}{I}}{\textbf{Indices}}{}}
+% \hfill
+% \rule[2pt]{0.45\linewidth}{1pt}}
+%
+% \makenomenclature
+
+%% babel et trucs de langue
+% \usepackage[autolanguage]{numprint}
+\usepackage[english]{babel}
+\usepackage[babel]{csquotes}
+\MakeAutoQuote{«}{»}
+
+% infos pour partout
+\newcommand{\montitre}{Qualité d'usage en télévision haute définition : évaluations subjectives et métriques objectives}
+\newcommand{\datesoutenance}{2 octobre 2008}
+
+
+%% hyperref et trucs pdf (avec ifpdf mais ne marche plus on dirait)
+\usepackage{graphicx}  % Graphiques internes et externes
+\usepackage{pstricks}
+% \usepackage{thumbpdf}
+\usepackage{pdflscape}
+\usepackage[pdftex, hyperindex, plainpages=false, pdfpagelabels, pagebackref, colorlinks=false, hypertexnames=false]{hyperref}
+
+\hypersetup{
+	pdftitle={\montitre},
+	pdfauthor={Stéphane Péchard},
+	pdfsubject={La télévision haute définition (TVHD) est le nouveau système de diffusion sensé apporter une plus grande immersion de l'observateur dans l'action et une qualité d'usage supérieure à celle de la télévision standard (TVSD). Afin de remplir ces exigences, les diffuseurs ont besoin de techniques de mesure de qualité adaptées. Le premier objectif de cette thèse est de nous éclairer sur l'impact de la transition de la TVSD vers la TVHD sur la qualité visuelle. Le second est de proposer des métriques objectives de qualité adaptées à la TVHD. Nous avons tout d'abord étudié plusieurs aspects de la qualité visuelle dans ce contexte. Cela nous a notamment permis de sélectionner une méthodologie d'évaluation subjective de la qualité pour constituer une base de séquences dégradées par un codage H.264. Puis, nous avons proposé une méthodologie d'évaluation de l'impact d'un système dégradant sur la qualité visuelle. Elle est utilisée dans les trois critères objectifs de qualité présentés par la suite. Elle fournit au premier une analyse du contenu permettant de modéliser la qualité visuelle d'une séquence. Le second critère cumule des fonctions de gêne locales en une note de qualité globale grâce à des modèles validés par la méthodologie. Le dernier exploite la notion de tubes spatio-temporels introduits par la méthodologie. Des caractéristiques y sont mesurées pour les séquences de référence et dégradée. Le cumul des différences entre ces caractéristiques fournit une note de qualité finale. Alors que le second critère n'offre pas de résultats convaincants, les deux autres permettent une prédiction des notes subjectives plus performante que celle de deux critères connus de la littérature.},
+	pdfkeywords={télévision haute définition, qualité subjective de la vidéo, codage H.264},
+	pdfcreator={\LaTeXe}
+% 	pdfproducer={Stéphane Péchard}
+}
+\usepackage[all]{hypcap}
+
+
+%%% après hyperref
+%% glossaire
+% \usepackage[number=none, hypertoc=true, style=list]{glossary} % style=altlist !!!! à placer après hyperref !!!!
+% \makeglossary
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Commandes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\ornementChapitre}{\begin{center}\begin{Large}\textorn{2}\end{Large}\end{center}}
+
+%% centrage des colonnes sur plusieurs lignes
+\renewcommand\multirowsetup{\centering}
+
+%% création d'un type de colonne centrée de largeur 1.5
+\newcolumntype{D}{>{\centering}p{1.5cm}}
+
+%% notes dans la marge
+\newcommand{\note}[1]{\marginpar{%
+  \vskip-\baselineskip %raise the marginpar a bit
+  \raggedright\footnotesize
+  \color{red}{\itshape\hrule\smallskip#1}\par\smallskip\hrule}}
+\newcommand{\nonotes}{\renewcommand{\note}[1]{}}
+
+%% strong %%
+\DeclareRobustCommand{\strong}[1]{%
+\textbf{#1}%
+}
+
+%% dédicace %%
+\DeclareRobustCommand{\dedicace}[1]{%
+\clearemptydoublepage
+\thispagestyle{empty}
+\vspace*{\stretch{1}}\par
+{\begin{flushright}\emph{#1}\end{flushright}\par}
+\vspace*{\stretch{2}}
+}
+
+%% sur-paragraphe (ligne entre deux groupes de paragraphes) %%
+\DeclareRobustCommand{\surparagraph}{%
+\par\medskip
+}
+
+%% raccourcis %%
+\newcommand\avc{H.264}
+\newcommand\ituCC{ITU-R BT.500-11~\cite{itu-bt500-11}}
+\newcommand\ituNfDx{ITU-T P.910~\cite{itu-bt910}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Paramétrages du document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% url dans la même police que le reste
+\urlstyle{rm}
+
+%% profondeur de la table des matières
+\setcounter{tocdepth}{2}
+% \setcounter{secnumdepth}{8}
+
+% on définit l'interligne pour tout le document
+\onehalfspacing
+
+% modification de la table des matières -- options titletoc
+\usepackage{titletoc}
+
+\titlecontents{part}												% label concerné
+[3pc]																	% espace à la marge gauche
+{\addvspace{1.5pc}\filcenter\hrule height 1pt \Large{\textbf{Partie}}~}		% formatage global du label (avant)
+{\Large\textbf}														% quand il y a un numéro
+{\Large\textbf}														% quand il n'y en a pas
+{}																		% séparateur (\titlerule*[1pc]{.}) et numéro de la page (\contentspage)
+[\hrule height 1pt\addvspace{.5pc}]					% ce qui se passe après
+
+
+%% redéfinition des labels (tableaux, figures, etc.) % voir french.cfg
+\addto\captionsfrench{\def\figurename{Figure}}
+\addto\captionsfrench{\def\tablename{Tableau}}
+\addto\captionsfrench{\def\listfigurename{Table des illustrations}}
+
+%% définition des en-têtes et pieds de page
+\pagestyle{fancy}
+\fancyhf{} % on efface tout
+\fancyhead[RO]{\nouppercase{\emph{\rightmark}}}
+\fancyhead[LE]{\nouppercase{\emph{\leftmark}}}
+\fancyfoot[RO,LE]{\ifthenelse{\value{page}=42}{\strong{--~\reflectbox{\thepage}~--}}{\strong{--~\thepage~--}}} % h2g2 style
+\fancypagestyle{plain}{ % pour les pages de chapitre
+\fancyhf{} % on efface tout
+\fancyfoot[RO,LE]{\ifthenelse{\value{page}=42}{\strong{--~\reflectbox{\thepage}~--}}{\strong{--~\thepage~--}}} % h2g2 style
+\renewcommand{\headrulewidth}{0pt}}
+
+%% on enlève le pied et l'en-tête d'une page paire vide
+\let\origdoublepage\cleardoublepage
+\newcommand{\clearemptydoublepage}{%
+  \clearpage
+  {\pagestyle{empty}\origdoublepage}%
+}
+\let\cleardoublepage\clearemptydoublepage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% On attaque le vif du sujet
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Qualité d'usage en télévision haute définition : \\évaluations subjectives et métriques objectives}
+\author{Stéphane Péchard}
+\date{\datesoutenance}
+
+\begin{document}
+\selectlanguage{frenchb} % on est en français
+
+\input{pgf/tikzPhD} % éléments de tikz
+\input{mathit} % définition d'objets
+\nonotes % on s'assure qu'on a rien laisser qui traine
+\input{glossaire} % les entrées du glossaire
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% avant-propos (numérotation romaine)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frontmatter
+
+%% page de garde
+\input{frontpage}
+
+%% page de titre
+\maketitle
+
+%% dédicace
+\dedicace{à Lilou, Victor et Gael\\à Éloïse}
+
+%% remerciements
+\include{merci} % TODO
+
+%% diverses tables
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% corps du document (numérotation arabe)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mainmatter
+
+%%% introduction
+\include{introduction}
+
+%%% partie 1 - Partie « subjective »
+\part[Évaluation subjective de la qualité visuelle \texorpdfstring{\\}{}en télévision haute définition]{Évaluation subjective de la qualité visuelle en télévision haute définition}
+% \include{1-testsub}
+% \include{2-HDContexteQual}
+% \include{3-evalImpactSysDegsurQual}
+% \include{bilan1}
+%
+% %%% partie 2 - Partie « objective »
+% \part[Critères objectifs de qualité vidéo \texorpdfstring{\\}{}en télévision haute définition]{Critères objectifs de qualité vidéo \\en télévision haute définition}
+% \include{4-metriques}
+% \include{5-eval}
+% \include{6-modQualVid}
+% \include{7-modClassif}
+%
+% %%% conclusion
+% \include{conclusion}
+%
+%
+% % redéfinition du style pour la dernière partie dans la table des matières
+% \titlecontents{part}													% label concerné
+% [3pc]																		% espace à la marge gauche
+% {\addvspace{1.5pc}\filcenter\hrule height 1pt}		% formatage global du label (avant)
+% {\Large\textbf}															% quand il y a un numéro
+% {\Large\textbf}															% quand il n'y en a pas
+% {}																			% séparateur (\titlerule*[1pc]{.}) et numéro de la page (\contentspage)
+% [\hrule height 1pt\addvspace{.5pc}]						% ce qui se passe après
+%
+%
+% %%% annexes
+% \part*{Annexes}
+% \addcontentsline{toc}{part}{Annexes}
+% \appendix
+% \input{a-base}
+% \input{b-transfoCouleur}
+%
+%
+% %%% glossaire
+% \renewcommand{\glossaryname}{Acronymes et abréviations}
+% \renewcommand{\shortglossaryname}{Acronymes et abréviations}
+% % \renewcommand{\glossarypreamble}{Les acronymes et autres abréviations présents dans cet ouvrage trouvent leurs expansions verbeuses dans ces quelques pages.\par}
+% % \renewcommand{\entryname}{Acronyme}
+% \printglossary
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% postambule
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\backmatter
+
+% TODO penser à une partie 4 (étoilée sans doute) pour la conclusion (? mais surement non), la page des publi, la biblio, le glossaire, la nomenclature, le colophon
+% \part*{Postambule}\addcontentsline{toc}{part}{Postambule}\markboth{Postambule}{Postambule}
+\include{publications} %% mes publications
+
+%%% bibliographie
+\nocite{*}
+\bibliographystyle{myBst}
+\bibliography{biblioPhD}
+
+
+%%% colophon
+% \include{colophon}
+
+%%% quatrième de couverture
+% \cleardoublepage
+% \thispagestyle{empty}~
+% \clearpage
+
+% \input{resumeLastPage}
+
+\end{document}

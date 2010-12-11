@@ -1,0 +1,73 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%% Auteur : Stéphane Péchard - stephane.pechard@univ-nantes.fr
+%%% Fichier : conclusion.tex - conclusion générale de la thèse
+%%% Version : 0.1
+%%% Date : 2007/11/26
+%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% citation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \unecitation{6.5}{On ne connait pas complètement une science tant qu'on n'en sait pas l'histoire.}{Auguste Compte (1798 -- 1857)} ??
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter*{Conclusion et perspectives}\addcontentsline{toc}{chapter}{Conclusion et perspectives}\markboth{Conclusion et perspectives}{Conclusion et perspectives}
+\opt{final}{\lettrine[lines=4]{L}{es travaux menés dans cette thèse}}\opt{nofinal}{Les travaux menés dans cette thèse} ont conduit à l’obtention de plusieurs résultats. Les contributions sont doubles puisqu’elles touchent à la fois à l'évaluation subjective et à l'évaluation objective de la qualité visuelle des systèmes de télévision haute définition (TVHD). L'une des contributions est utilisée dans les deux parties. Il s'agit de la constitution d'une base de séquences au format TVHD, question cruciale pour la communauté de la qualité vidéo. Nous avons réalisé des tests subjectifs sur 24 contenus et 7 débits de codage H.264 pour chacun des contenus. Cela représente un total de 192 séquences haute définition pour lesquelles nous disposons de la qualité subjective.
+
+
+\subsubsection*{Contributions à l'évaluation subjective de la qualité des systèmes de télévision haute définition}
+% 2
+Dans un premier temps, trois aspects de la qualité visuelle liée à ce contexte particulier ont été étudiés :
+\begin{itemize}
+\item l'impact de la méthodologie d’évaluation subjective de la qualité ;
+\item la préférence entre télévision haute définition et télévision à définition standard ;
+\item l'impact de l'affichage.
+\end{itemize}
+
+Concernant l'impact de la méthodologie d’évaluation subjective de la qualité, nous avons montré que les deux méthodologies testées, ACR et SAMVIQ, ne fournissent pas des mesures de qualités similaires. En fait, la taille de l'image, et donc celle du champ visuel excité, a une influence sur l'évaluation de qualité. Nous avons également montré qu'à nombre d'observateurs identique, la méthodologie SAMVIQ fournit des mesures de qualité de plus grande précision que la méthodologie ACR. Il faut donc moins d'observateurs avec SAMVIQ pour obtenir une même précision, ce qui réduit la longueur et le cout des tests subjectifs.
+
+Pour l'étude de préférence entre la télévision haute définition et la télévision standard, nous avons tout d'abord conçu une méthodologie de comparaison visuelle de contenus de différentes définitions afin de pouvoir mesurer cette préférence. Dans la transition de la TVSD à la TVHD, deux effets contradictoires ont été identifiés : la taille de l'image et la quantité de dégradations contenue. Les zones d'influence de ces deux effets ont été déterminées grâce au test de préférence. Nous avons ainsi montré que le gain en qualité visuelle de la télévision haute définition est directement lié à une faible quantité de dégradations perçues. Si celles-ci sont trop importantes, l'observateur moyen a tendance à préférer une image de taille plus réduite.
+
+Deux études ont été réalisées pour étudier l'impact de l'affichage sur la qualité. La première a montré que la différence de technologie d'affichage introduit un écart de qualité perçue en faveur de l'écran CRT. Dans la seconde étude, nous avons évalué l'impact d'un traitement d'adaptation de l'image à une définition supérieure. Nous avons montré que ce traitement provoquait des pertes de qualité sensibles, autant sur écran LCD que sur écran CRT. Ces sujets spécifiques sont actuellement approfondis dans notre laboratoire par les travaux de thèse de Sylvain Tourancheau.
+
+\bigskip
+
+% 3
+Dans un second temps, nous avons proposé une méthodologie d'évaluation subjective de l'impact d'un système dégradant sur la qualité visuelle. Notre approche prend le contrepied de celle de Farias~\cite{farias-phd}, en remplaçant son partitionnement en type de dégradations par un partitionnement en zones spatio-temporelles cohérentes. La méthodologie permettant d'exploiter cette idée est constituée d'une segmentation spatio-temporelle de la séquence et d'une classification des segments. La segmentation introduit la notion de tubes spatio-temporels dont l'originalité est de suivre le mouvement local. La classification assigne à chaque tube une classe de contenu. Chacune d'elle est dégradée et évaluée individuellement, ce qui fournit les pertes de qualité locales d'une séquence. L'application de cette méthode a permis de nous intéresser à la question du cumul de ces pertes de qualité locales en une perte globale. Nous avons ainsi montré que de simples combinaisons linéaires permettaient d'obtenir une forte relation entre ces grandeurs. Ce résultat est très intéressant car il ouvre la voie à un modèle objectif évaluant la quantité de dégradation globale à partir des quantités de dégradations dans des zones locales typées.
+
+
+\subsubsection*{Contributions à l'évaluation objective de la qualité des systèmes de télévision haute définition}
+% 5
+La première contribution a été d'évaluer les performances de deux critères de la littérature. Performants en télévision standard, VSSIM~\cite{wang-vqasdm} et VQM~\cite{wolf-vqmtech} ont été utilisés sur une base de séquences haute définition dégradées. VQM produit des indicateurs de performance meilleurs que ceux de VSSIM. Les coefficients de corrélation et les racines carrées de l'erreur quadratique moyenne sont même statistiquement supérieurs dans toutes les configurations testées. Enfin, nous avons constaté une différence sensible de performances dans la prédiction de la qualité visuelle entre les formats TVSD et TVHD. Globalement, la qualité de la TVHD est moins bien prédite par les deux critères testés.
+
+\bigskip
+
+% 6
+Nous avons ensuite proposé des critères objectifs de qualité vidéo adaptés à la télévision haute définition. Le premier est basé à la fois sur le débit et sur une analyse du contenu exploitant des facteurs issus de la classification du contenu. Le coefficient de corrélation entre qualités prédites et qualités mesurées est de 0,901 pour notre critère, contre 0,892 pour VQM et 0,792 pour VSSIM. Les racines carrées de l'erreur quadratique moyenne sont respectivement de 8,47, 8,79 et de 11,90 pour notre critère, VQM et VSSIM. Les différences entre ces indicateurs ne sont pas significatives sur la base d'évaluation considérée. Cependant, l'autre intérêt du critère proposé est sa simplicité de conception et de mise en \oe uvre, ce qui le distingue de critères plus complexes comme VQM. Ce choix engendre une spécialisation au contexte du codage H.264 de la télévision haute définition, mais permet d'obtenir des performances supérieures. En dehors de l'analyse du contenu qui pourrait être effeuctée avec une moindre complexité, notre critère est d'une rapidité d'exécution très supérieure à VQM. Il pourrait donc être utilisé pour l'estimation en temps-réel de la qualité visuelle de séquences haute définition codées par un codeur H.264. Ce dernier pourrait exploiter un tel critère pour déterminer le débit nécessaire à l'obtention d'un niveau de qualité donné après codage et décodage.
+
+\bigskip
+
+Alors que l'approche consistant à construire une fonction de gêne par classe de contenu n'a pas fourni de résultats satisfaisants, celle basée sur l'exploitation des tubes spatio-temporels est plus performante. Nous avons cherché à valider l'idée selon laquelle ces tubes s'orientent suivant le mouvement local afin de conserver une cohérence spatio-temporelle. Les performances obtenues par ce critère montrent à la fois un gain par rapport au même critère utilisé avec des tubes fixes, mais également par rapport aux critères VQM et VSSIM. Le coefficient de corrélation entre qualités prédites et qualités mesurées est de 0,898 pour notre critère, contre 0,875 pour VQM et 0,837 pour VSSIM. Les racines carrées de l'erreur quadratique moyenne sont respectivement de 8,30, 8,98 et de 10,15 pour notre critère, VQM et VSSIM. De nouveau, les différences entre ces indicateurs ne sont pas significatives. Néanmoins, nous avons montré que l'idée d'orienter les tubes selon le mouvement apportait un gain en performance. En effet, le coefficient de corrélation obtenu par ce même critère utilisé avec des tubes fixes au cours du temps est de 0,875 et la racine carrée de l'erreur quadratique moyenne est de 9,08 dans les meilleures conditions. Au prix d'une complexité accrue due à l'estimation de mouvement, l'orientation des tubes permet un gain sensible en performances.
+
+
+\subsubsection*{Perspectives}
+D'une manière générale, nos travaux ont permis une meilleure compréhension des processus d'évaluation de la qualité visuelle en télévision haute définition. Néanmoins, il reste des zones d'ombre à éclaircir et la possibilité d'approfondir certaines des approches proposées. En premier lieu, l'élargissement de la base de séquences haute définition permettrait un meilleur apprentissage des critères objectifs. Cela permettrait également de réduire les imprécisions sur les indicateurs de performance et donc de s'assurer de leur écart par rapport à l'existant.
+
+Dans tous nos travaux, nous nous sommes restreints à l'évaluation de dégradations de type codage. Il est évident qu'un service de télévision haute définition complet introduit d'autres types de dégradations, comme par exemple les erreurs de transmission. L'élargissement à un spectre de dégradations plus grand permettrait une caractérisation plus fine de la qualité d'un service de TVHD. De même, nous n'utilisons qu'une seule mise en \oe uvre de la norme H.264. Il n'est pas assuré qu'une autre réagisse de la même manière, ce qui peut nécessiter des développements supplémentaires.
+
+\bigskip
+
+La caractérisation qualitative de la télévision haute définition pourrait être étoffée d'expérimentations complémentaires. Nous comparons ACR et SAMVIQ mais d'autres méthodologies d'évaluation subjective de la qualité pourraient être ajoutées à la comparaison. De même, l'étude de l'impact de l'affichage ne prend en compte qu'un seul des nombreux traitements présents dans les écrans haute définition modernes. Un ensemble plus exhaustif de ces traitements est envisageable et serait intéressant pour la conception d'écrans TVHD.
+
+Un service de TVHD est multimodal et l'un des prolongements logiques de ces travaux est la prise en compte de la qualité sonore. Outre la mise au point de techniques d'évaluation de cette qualité, le couplage des deux médias et la mesure de la qualité résultante est une problématique à envisager.
+
+\bigskip
+
+Plusieurs travaux complémentaires sont réalisables sur les critères objectifs de qualité, notamment dans le développement de solutions temps-réel. Ainsi, le premier critère n'utilise qu'une partie des informations fournies par la segmentation spatio-temporelle et la classification. Il est envisageable d'utiliser une méthode dédiée et plus rapide afin de tendre vers un critère temps-réel.
+
+L'approche consistant à segmenter l'évaluation de la qualité en plusieurs évaluations de qualité locales n'a pas donné les résultats escomptés. Néanmoins, nous pensons qu'il est possible d'améliorer sensiblement les résultats que nous avons obtenus. Toutefois, il faut insister sur la complexité de cette tâche si ce critère doit s'appuyer sur des résultats expérimentaux, rendu très lourds par le découpage du problème.
+
+Enfin, le dernier critère est difficilement envisageable en temps-réel avec une solution purement logicielle. Sa complexité le destine plutôt à une mesure de qualité hors-ligne de courtes portions du signal d'image. Néanmoins, il doit pouvoir s'adapter à un plus large spectre d'applications que le premier, et notamment à des contextes non liés au codage. Les prolongements possibles à l'approche adoptée par ce critère se situent principalement dans la diversité des éléments le constituant.
+
+\ornementChapitre

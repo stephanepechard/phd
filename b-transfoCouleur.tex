@@ -1,0 +1,121 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%% Auteur : Stéphane Péchard - stephane.pechard@univ-nantes.fr
+%%% Fichier : a-base.tex - annexe B : Transformation des niveaux YCbCr d'une séquence vidéo en luminances perceptuelles
+%%% Version : 0.1
+%%% Date : 2007/12/04
+%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter[Transformation des niveaux YCbCr d'une séquence vidéo en luminances perceptuelles]{Transformation des niveaux YCbCr \\d'une séquence vidéo en luminances perceptuelles} \label{annex:transfo}
+\opt{final}{\lettrine[lines=4, findent=-1em, slope=0.6em]{A}{fin de simuler l'impact de séquences vidéos}}\opt{nofinal}{Afin de simuler l'impact de séquences vidéos} sur la perception des observateurs, il est possible de les représenter directement dans le domaine perceptuel. Ce domaine correspond à une décomposition en composantes perceptuelles validée par Bédat~\cite{bedat-phd}. Pour accéder à ce domaine, il faut réaliser l'ensemble de transformations permettant de passer des niveaux de gris du signal numérique aux luminances perceptuelles perçues par les observateurs. Ces transformations sont présentées figure~\ref{fig:transfoCouleursAnnex}. Elles sont dues à la fois au matériel et au logiciel utilisé mais également au système visuel humain. Cette annexe présente les transformations subies par les différentes séquences de la base de l'annexe~\ref{annex:base}.
+
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[node distance=3cm, text centered, text width=5em, minimum height=2em]\input{pgf/chap7/transfoCouleurs}\end{tikzpicture}
+	\caption{Transformations effectuées par la chaine de traitement vidéo.}
+	\label{fig:transfoCouleursAnnex}
+\end{figure}
+
+La transformation globale s'effectue en plusieurs étapes présentées sur la figure~\ref{fig:transfoCouleursModel}. Nous partons des séquences au format YCbCr 4$:$2$:$2, le plus courant de notre base et celui utilisé par le lecteur de séquences haute définition. Les quatre séquences au format 4$:$2$:$0 sont tout d'abord transformées en 4$:$2$:$2. Pour cela, les échantillons de chrominance sont répétés une fois selon la direction horizontale comme le montre la figure~\ref{fig:420Vers422}.
+
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[node distance=3cm, text centered]\input{pgf/chap7/transfoCouleursModel}\end{tikzpicture}
+	\caption{Étapes de la transformation des niveaux YCbCr en signaux perceptuels.}
+	\label{fig:transfoCouleursModel}
+\end{figure}
+
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[font=\footnotesize]\input{pgf/chap7/420Vers422}\end{tikzpicture}
+	\caption{Conversion du format 4$:$2$:$0 au format 4$:$2$:$2 pour une image de taille 4\texttimes4.}
+	\label{fig:420Vers422}
+\end{figure}
+
+
+\section{Conversion de YCbCr vers RGB}
+La première conversion appliquée consiste à transformer les données de l'espace YCbCr en information de l'espace RGB. Dans la chaine de visualisation, cette étape est réalisée matériellement par un convertisseur. En pratique, cette transformation se réalise en passant par le format intermédiaire 4$:$4$:$4. Nous transformons donc les séquences 4$:$2$:$2 dans ce format. Nous utilisons la même méthode que le convertisseur, à savoir une interpolation linéaire, telle que l'illustre la figure~\ref{fig:422Vers444}. La dernière ligne de l'image est obtenue en recopiant les échantillons de chrominance de la ligne précédente.
+
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[font=\footnotesize]\input{pgf/chap7/422Vers444}\end{tikzpicture}
+	\caption{Conversion du format 4$:$2$:$2 au format 4$:$4$:$4 avec $Cb_{15} = \frac{Cb_1+Cb_5}{2}$, $Cb_{26} = \frac{Cb_2+Cb_6}{2}$, $Cb_{37} = \frac{Cb_3+Cb_7}{2}$, $Cb_{48} = \frac{Cb_4+Cb_8}{2}$ pour une image de taille 4\texttimes4.}
+	\label{fig:422Vers444}
+\end{figure}
+
+L'utilisation de la norme ITU-R BT.709~\cite{itu-bt709-5} est courante dans la production de contenus haute définition. Nous savons par exemple qu'elle est utilisée pour la transformation de RGB vers YCbCr des 16 séquences originales provenant de SVT. Nous n'avons pas l'information pour la sous-base Euro1080 mais nous supposons que c'est également le cas. Nous utilisons donc la transformation inverse pour retrouver les données RGB :
+
+\begin{equation}
+\text{Mat}_{\YCbCr \Rightarrow \RGB} =\left(
+\begin{array}{ccc}
+1 & 0 & 1,5748\\
+1 & - 0,1873 & - 0,4681\\
+1 & 1,8556 & 0\\
+\end{array}\right).
+\end{equation}
+
+L'étape d'arrondi et \emph{clipping} consiste d'une part à arrondir les valeurs transformées à l'entier le plus proche, et d'autre part à conserver toutes ces valeurs dans l'intervalle $\llbracket0;255\rrbracket$. Pour cela, les valeurs inférieures à $0$ sont prises égales à $0$ et les valeurs supérieures à $255$ sont prises égales à $255$.
+
+
+\section{Transformation en luminances physiques}
+La seconde étape est une transformation en luminances physiques qui utilise la fonction de transfert non linéaire de l'écran. Celle-ci se présente sous la forme d'une table de correspondance à 256 niveaux pour chaque composante. Les trois tables sont obtenues grâce à des mesures effectuées par une sonde de calibrage. Par exemple, les valeurs mesurées sur notre écran LCD sont présentées sur la figure~\ref{fig:LUT_PhilipsLCD}. Ce type de mesure peut engendrer des saturations de certaines composantes, comme nous le remarquons pour la composante rouge à partir de la valeur 221. Ainsi, utiliser cette transformation permet de se placer dans les mêmes conditions que lors de l'évaluation subjective.
+
+\begin{figure}[htbp]
+	\centering
+	\begin{tikzpicture}[only marks, xscale=0.04, yscale=0.023]
+		\draw plot[mark=-,mark options={scale=8}] file {plot/chap7/LUT_Philips_LCD_R.txt};
+		\node at (225,100) {$L_R$};
+		\draw plot[mark=-,mark options={scale=8}] file {plot/chap7/LUT_Philips_LCD_G.txt};
+		\node at (225,250) {$L_G$};
+		\draw plot[mark=-,mark options={scale=8}] file {plot/chap7/LUT_Philips_LCD_B.txt};
+		\node at (225,40) {$L_B$};
+		\draw[->] (0,0) -- node[below=0.5cm] {} (260,0);
+		\draw[->] (0,0) -- node[above=0.75cm, sloped] {luminance physique (cd/m$^2$)} (0,320) ;
+		\foreach \x in {0,50,100,150,200,250} \draw (\x,1) -- (\x,-1) node[anchor=north] {\x};
+		\foreach \y in {0,50,100,150,200,250,300} \draw (1,\y) -- (-1,\y) node[anchor=east] {\y};
+% 		\draw[legende] (5,300) rectangle (100,);
+	\end{tikzpicture}
+	\caption{Fonction $\gamma$ des composantes R, G et B de l'écran LCD Philips.}
+	\label{fig:LUT_PhilipsLCD}
+\end{figure}
+
+
+\section{Transformation en luminance et chrominances perceptuelles}
+Cette dernière transformation s'effectue en trois étapes. La première est une transformation non linéaire correspondant à la réponse du système visuel humain aux luminances physiques provenant de l'écran~\cite{poynton-faqColor}. Cette adaptation permet de limiter la dynamique des signaux d'entrée. Pour chaque composante de luminance physique $L_R$, $L_G$, $L_B$, ici notée $L$, nous avons :
+
+\begin{equation}
+L' = \begin{cases}
+116(\frac{L}{L_{\textit{br}}})^{1/3} - 16, 				& \text{ si } \frac{L}{L_{\textit{br}}} > (\frac{6}{29})^3\\
+(\frac{29}{3})^3\times\frac{L}{L_{\textit{br}}}, 		& \text{ si } \frac{L}{L_{\textit{br}}} \leqslant (\frac{6}{29})^3\\
+\end{cases}
+\end{equation}
+%
+avec $L_{\textit{br}}$ la luminance du blanc de référence, mesurée à 448,32 pour l'écran LCD utilisé lors de nos tests.
+
+La seconde étape est une transformation en signaux des cônes d'absorption L, M et S présents sur la rétine de l'\oe il humain. Cette transformation dépend de la réponse spectrale de l'écran utilisé. Cette réponse va notamment être différente entre un écran de type CRT et un écran de type LCD. Nous utilisons la matrice de transformation spécifique à notre écran de type LCD, calculée par Sylvain Tourancheau :
+\begin{equation}
+\text{Mat}_{\RGBlum \Rightarrow \LMS} =\left(
+\begin{array}{ccc}
+64.1300 & 113.5566 & 17.4919\\
+25.6881 & 138.6708 & 30.8196\\
+4.2245  & 19.1384  & 171.8156\\
+\end{array}\right).
+\end{equation}
+
+Enfin, nous utilisons la transformation de Krauskopf~\cite{krauskopf-vr1982} pour passer dans l'espace des signaux perceptuels $\ACrCr$, avec $A$ la composante achromatique, $\Cr_1$ et $\Cr_2$ les deux composantes de chrominance :
+\begin{equation}
+\text{Mat}_{\LMS \Rightarrow \ACrCr} =\left(
+\begin{array}{ccc}
+1		&  1		& 0\\
+1		& -1 		& 0\\
+-\dfrac{1}{2}	& -\dfrac{1}{2}	& 1\\
+\end{array}\right)
+\end{equation}
+
+% Dans la suite de ce chapitre, nous travaillons donc dans l'espace $\ACrCr$.
+
+\section{Conclusion}
+Cette annexe a présenté les différentes transformations nécessaires au passage des signaux YCbCr d'une vidéo numérique à la luminance et aux chrominances perceptuelles perçues par l'observateur standard. Prendre en compte cet ensemble de transformations dans un modèle permet de se placer exactement dans les mêmes conditions que lors de l'évaluation subjective des séquences.
+
+
+\ornementChapitre

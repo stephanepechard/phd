@@ -1,0 +1,21 @@
+% schéma de l'optimisation du cumul
+
+\begin{tikzpicture}[node distance = 3cm, auto]
+    % Place nodes
+	\node (MdID) {$\Md(l,T)$};
+	\node [right of=MdID, node distance = 1.25cm] (MdVide) {};
+	\node [below of=MdVide, node distance = 1.25cm] (belowMdVide) {};
+	\node [action, right of=MdID, text width=5em, node distance = 2.5cm] (cumulID) {cumul inter-distorsions};
+	\node [action, right of=cumulID, text width=5em, node distance = 3.5cm] (cumulTemp) {cumul temporel};
+	\node [action, right of=cumulTemp, text width=5em] (fAjust) {fonction d'ajustement};
+	\node [right of=fAjust] (rmse) {$\RMSE(\MOS, \MOSp)$};
+	\node [right of=fAjust, node distance = 1.5cm] (rmseVide) {};
+	\node [below of=rmseVide, node distance = 1.25cm] (belowrmseVide) {};
+
+    % Draw edges
+	\path [fleche] (MdID) -- (cumulID);
+    \path [fleche] (cumulID) -- node {$\Md(T)$} (cumulTemp);
+	\path [fleche] (cumulTemp) -- node {$\Md$} (fAjust);
+	\path [fleche] (fAjust) -- (rmse);
+	\path [fleche] (10.2,0) -- (10.2, -1) -- (1,-1) -- (1,0); % TODO à revoir
+\end{tikzpicture}

@@ -1,0 +1,32 @@
+% \begin{tikzpicture}
+
+\foreach \y in {0,1,2,3,4,5,6,7,9,10,11,12,13,14,15,16} {
+	\foreach \x in {0,1,2,3,4,5,6,7,9,10,11,12,13,14,15,16} {
+		\draw (\x,\y) -- (\x+0.8,\y) -- (\x+0.8,\y+0.8) -- (\x,\y+0.8) -- cycle;
+	}
+}
+
+\draw[dashed] (8.4,-0.2) -- (8.4,17);
+\draw[dashed] (-0.2,8.4) -- (17,8.4);
+
+\draw (0.4,6.35) node{$\bullet$};
+\draw (9.4,6.35) node{$\bullet$};
+\draw (0.4,15.35) node{$\bullet$};
+\draw (9.4,15.35) node{$\bullet$};
+
+\draw (0.4,0.35) node{$\blacksquare$}; % $\blacksquare$
+\draw (9.4,0.35) node{$\blacksquare$};
+\draw (0.4,9.35) node{$\blacksquare$};
+\draw (9.4,9.35) node{$\blacksquare$};
+
+\draw (7.4,0.35) node{$\bigstar$}; % \bigstar
+\draw (16.4,0.35) node{$\bigstar$};
+\draw (7.4,9.35) node{$\bigstar$};
+\draw (16.4,9.35) node{$\bigstar$};
+
+\draw (7.4,6.35) node{$\blacktriangledown$}; % \blacktriangledown
+\draw (16.4,6.35) node{$\blacktriangledown$};
+\draw (7.4,15.35) node{$\blacktriangledown$};
+\draw (16.4,15.35) node{$\blacktriangledown$};
+
+% \end{tikzpicture}

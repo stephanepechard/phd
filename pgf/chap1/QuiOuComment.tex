@@ -1,0 +1,15 @@
+% \begin{tikzpicture}[text centered]
+	\node (qui) [action, thick, minimum height=3.5cm, text width=5.1cm] {};
+	\draw (0,1.2) node[text centered] {\begin{huge}\textbf{les observateurs}\end{huge}};
+	\draw (0,0.6) node[anchor=north] {\begin{center}\textbf{qui ?}\end{center}\begin{itemize}\item combien ? \item quelles capacités visuelles ?\end{itemize}};
+
+	\draw (8,0) node (ou) [action, thick, minimum height=3.5cm, text width=5cm] {};
+	\draw (8,1.2) node[text centered] {\begin{huge}\textbf{l'environnement}\end{huge}};
+	\draw (8,0.6) node[anchor=north] {\begin{center}\textbf{où ?}\end{center}\begin{itemize}\item quelles conditions ? \item quel affichage ?\end{itemize}};
+
+	\draw (4,-5) node (comment) [action, thick, minimum height=4.5cm, text width=6.5cm] {};
+	\draw (4,-3.5) node[text centered] {\begin{huge}\textbf{la méthodologie}\end{huge}};
+	\draw (4,-5.5) node[text width=6.5cm] {\begin{center}\textbf{comment ?}\end{center}\begin{itemize}\item quelle grandeur ? \item quelle échelle ? \item quelle interface d'évaluation ? \item quelle sélection des observateurs ?\end{itemize}};
+
+	\path[draw,thick] (qui) -- (ou) -- (comment) -- (qui);
+% \end{tikzpicture}

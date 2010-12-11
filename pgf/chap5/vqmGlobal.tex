@@ -1,0 +1,29 @@
+% \begin{tikzpicture}[text centered,text width=2cm] % schéma schéma du critère VQM
+\node (ref) {vidéo de référence};
+\node[action,right of=ref,node distance=3cm] (codage) {codage};
+\node[action,right of=codage,node distance=3cm] (decodage) {décodage};
+\node[right of=decodage,node distance=3cm] (deg) {vidéo dégradée};
+
+\node[action,below of=ref] (calibRef) {calibrage};
+\node[action,below of=deg] (calibDeg) {calibrage};
+\node[action,text width=3cm,below of=calibRef] (caracRef) {extraction de caractéristiques};
+\node[action,text width=3cm,below of=calibDeg] (caracDeg) {extraction de caractéristiques};
+
+\node[right of=caracRef,node distance=4.5cm] (tmp) {};
+\node[action,text width=5cm,below of=tmp,node distance=1.2cm] (param) {calcul de paramètres de qualité};
+\node[action,below of=param,text width=2.5cm,node distance=1.2cm] (modele) {modèle VQM};
+\node[below of=modele,text width=2.5cm,node distance=1.2cm] (vqm) {note de qualité};
+
+\path[fleche] (ref) -- (codage);
+\path[fleche] (codage) -- (decodage);
+\path[fleche] (decodage) -- (deg);
+\path[fleche] (ref) -- (calibRef);
+\path[fleche] (deg) -- (calibDeg);
+\path[fleche] (calibRef) -- (caracRef);
+\path[fleche] (calibDeg) -- (caracDeg);
+\path[fleche] (caracRef) |- (param);
+\path[fleche] (caracDeg) |- (param);
+\path[fleche] (param) -- (modele);
+\path[fleche] (modele) -- (vqm);
+
+% \end{tikzpicture}

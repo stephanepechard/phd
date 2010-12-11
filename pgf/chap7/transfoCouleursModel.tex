@@ -1,0 +1,22 @@
+% schéma de la transformation YCbCr vers ACr1Cr2
+
+% Place nodes
+\node (ycbcr422) {YCbCr 422};
+\node [action, text width=6em, right of=ycbcr422] (422444) {transformation 422$\Rightarrow$444};
+\node [action, text width=6em, right of=422444, node distance=5cm] (ycbcr2rgb) {transformation YCbCr$\Rightarrow$RGB};
+\node [action, text width=5em, right of=ycbcr2rgb, node distance=4cm] (arrondiclipping) {arrondi et \emph{clipping}};
+\node [action, text width=5em, below of=arrondiclipping, node distance=2cm] (gamma) {fonction $\gamma$};
+\node [action, text width=5em, node distance = 4cm, left of=gamma] (fonctionNL) {fonction non linéaire};
+\node [action, text width=7em, node distance = 4.5cm, left of=fonctionNL] (lum2lms) {matrice $L'_RL'_GL'_B\Rightarrow$LMS};
+\node [action, text width=6em, left of=lum2lms, node distance=3.62cm] (lms2acr1cr2) {transformation de Krauskopf};
+\node [text width=5em, node distance = 1.5cm, below of=lms2acr1cr2] (acr1cr2) {ACr1Cr2};
+
+% Draw edges
+\path [fleche] (ycbcr422) -- (422444);
+\path [fleche] (422444) -- (ycbcr2rgb) node[above,pos=0.5] {YCbCr 444};
+\path [fleche] (ycbcr2rgb) -- (arrondiclipping) node[above, pos=0.5] {RGB};
+\path [fleche] (arrondiclipping) -- (gamma) node[right, pos=0.5] {R'G'B'};
+\path [fleche] (gamma) -- (fonctionNL) node[below, pos=0.45, text width=5em] {$L_RL_GL_B$};% (luminances physiques)};
+\path [fleche] (fonctionNL) -- (lum2lms) node[below, pos=0.5, text width=6em] {$L'_RL'_GL'_B$};% (luminances perceptuelles)};
+\path [fleche] (lum2lms) -- (lms2acr1cr2) node[below, pos=0.5] {LMS};
+\path [fleche] (lms2acr1cr2) -- (acr1cr2);

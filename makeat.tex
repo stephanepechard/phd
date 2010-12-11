@@ -1,0 +1,112 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Bidouillages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+
+%% pour pallier au problème des overfull hbox dans la table des matières
+\renewcommand{\@pnumwidth}{2em}
+
+%% pour pallier au problème de niveau des algos
+% \providecommand{\toclevel@algorithm}{0}
+
+%% supression et remise des warnings (pour virer ceux de fourier notamment)
+\let\@font@warningori\@font@warning
+\newcommand\shutup{\def\@font@warning##1{}}
+\newcommand\youcanspeak{\let\@font@warning\@font@warningori}
+
+
+%% logos LaTeX dans la bonne police :-)
+%%% From File: ltlogos.dtx
+\def\myTeX{T\kern-.1667em\lower.4ex\hbox{E}\kern-.1emX\@}
+\DeclareRobustCommand{\myLaTeX}{L\kern-.25em%
+        {\sbox\z@ T%
+         \vbox to\ht\z@{\hbox{\check@mathfonts
+                              \fontsize\sf@size\z@
+                              \math@fontsfalse\selectfont
+                              A}%
+                        \vss}%
+        }%
+        \kern-.15em%
+        \myTeX}
+\DeclareRobustCommand{\myLaTeXe}{\mbox{\m@th
+  \if b\expandafter\@car\f@series\@nil\boldmath\fi
+  \myLaTeX\kern.15em2$_{\textstyle\varepsilon}$}}
+
+
+%% copies de sauvegarde du titre et de la date
+\let\Title\@title
+\let\Date\@date
+
+
+%% page d'entrée, redéfinition de maketitle pour ne pas en faire une titlepage
+\renewcommand\maketitle{%
+  \cleardoublepage
+  \thispagestyle{empty}
+  \let\footnotesize\small
+  \let\footnoterule\relax
+%   \let \footnote \thanks
+  \null\vfil
+  \vskip 60\p@
+  \begin{center}%
+    {\LARGE \@title \par}%
+    \vskip 3em%
+    {\large
+     \lineskip .75em%
+      \begin{tabular}[t]{c}%
+        \@author
+      \end{tabular}\par}%
+      \vskip 1.5em%
+    {\large \@date \par}%       % Set date in \large size.
+  \end{center}\par
+  \@thanks
+  \vfil\null
+  \clearpage
+%   \end{titlepage}%
+  \setcounter{footnote}{0}%
+  \global\let\thanks\relax
+  \global\let\maketitle\relax
+  \global\let\@thanks\@empty
+  \global\let\@author\@empty
+  \global\let\@date\@empty
+  \global\let\@title\@empty
+  \global\let\title\relax
+  \global\let\author\relax
+  \global\let\date\relax
+  \global\let\and\relax
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% hack pour avoir la continuité dans la numérotation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% sauvegarde du \pagenumbering habituel
+\let\pagenumberingori\pagenumbering
+
+% redéfinit \pagenumbering comme d'habitude sauf que le compteur \c@page n'est pas remis à zéro
+\newcommand*\newpagenumbering{%
+   \gdef\pagenumbering##1{%
+     \gdef\thepage{\csname @##1\endcsname \c@page}%
+   }
+}
+
+% remet \pagenumbering à son comportement par défaut (on ne sait jamais)
+\newcommand\restorepagenumbering{%
+   \global\let\pagenumbering\pagenumberingori
+}
+
+% sauvegarde du \mainmatter normal
+\let\mainmatterori\mainmatter
+
+% C'est bon, on peut y aller
+\renewcommand\mainmatter{%
+   % cassage en règle du \pagenumbering
+   \newpagenumbering
+   % appel du \mainmatter normal qui va se faire blouser lorsqu'il appellera \pagenumbering. hé hé hé !
+   \mainmatterori
+   % on remet \pagenumbering en place. Ni vu, ni connu.
+   \restorepagenumbering
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatother
+

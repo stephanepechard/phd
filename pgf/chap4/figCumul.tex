@@ -1,0 +1,14 @@
+% \begin{tikzpicture}[text centered]
+% Place nodes
+	\node[text width=2cm] (info) {grandeurs locales};
+	\node[action, right of=info, text width=2cm] (cumul) {cumul sur les grandeurs};
+	\node[action, right of=cumul] (spatial) {cumul spatial};
+	\node[action, right of=spatial,text width=2cm] (temp) {cumul temporel};
+	\node[right of=temp] (note) {note finale};
+
+% Draw edges
+	\path[fleche] (info) -- (cumul);
+	\path[fleche] (cumul) -- (spatial);
+	\path[fleche] (spatial) -- (temp);
+	\path[fleche] (temp) -- (note);
+% \end{tikzpicture}

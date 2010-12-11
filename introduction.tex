@@ -1,0 +1,72 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%% Auteur : Stéphane Péchard - stephane.pechard@univ-nantes.fr
+%%% Fichier : introduction.tex - introduction générale de la thèse
+%%% Version : 0.1
+%%% Date : 2007/11/26
+%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% citation
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \begin{savequote}[15pc]
+% Last night I was in the Kingdom of Shadows. If you only knew how strange it is to be there. It is a world without sound, without colour. Every thing there—the earth, the trees, the people, the water and the air—is dipped in monotonous grey.
+% \qauthor{Maxim Gorky, On a Visit to the Kingdom of Shadows}
+% \end{savequote}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter*{Introduction générale}\addcontentsline{toc}{chapter}{Introduction générale}\markboth{Introduction générale}{Introduction générale}
+\opt{final}{\lettrine[lines=4]{C'}{est en 1926 que John Logie Baird}}\opt{nofinal}{C'est en 1926 que John Logie Baird} fait la première démonstration publique du principe de la télévision noir et blanc. Depuis, le concept de base est toujours le même. Un système de télévision permet la transmission d'images animées et de sons qui sont reproduits à la réception par un appareil appelé téléviseur. Si le concept n'a pas bougé, des évolutions sont apparues au cours du temps. En 1967 a lieu la première diffusion française de télévision en couleur. En 2005, la télévision numérique terrestre (TNT) apparait. Quand nous avons débuté nos travaux, la diffusion de services de télévision numérique haute définition (TVHD) n'existait que dans quelques pays comme les États-Unis, le Japon ou l'Australie. Aujourd'hui, les premiers services sont apparus en Europe et le média représente la nouvelle évolution majeure dans le domaine de la télévision grand public.
+
+
+\subsection*{Évaluer la qualité en télévision haute définition}
+Le passage à la TVHD est motivé par des raisons à la fois psychologiques, techniques et économiques. Pour l'usager, le nouveau format permet une meilleure immersion dans l'action, grâce à un élargissement du champ visuel excité par l'image. La sensation de présence de l'appareil de restitution est réduite, au profit d'un impact psychologique plus important. Techniquement, les dernières évolutions en termes de capture, de compression, de transmission et de restitution permettent aujourd'hui d'envisager un déploiement de la TVHD au niveau continental. Enfin, les constructeurs et les diffuseurs y voient la possibilité d'élargir les services commerciaux proposés aux usagers.
+
+La haute définition génère une grande quantité de données à transmettre. Pour assurer une qualité d'usage satisfaisante, les stratégies mises en place consistent d'une part à allouer des débits conséquents, d'autre part à se reposer sur les techniques les plus récentes et les plus performantes en termes de codage, de transmission, de traitements et de visualisation d'images. En conséquence, de nouveaux types de dégradations du service apparaissent. Ajoutés à la nécessité de maintenir la qualité d'usage à un haut niveau, cela conduit à un important besoin de techniques de mesure de la qualité d'usage adaptées à la TVHD. La problématique ainsi énoncée est multimodale, dans le sens où l'usage de la télévision fait au minimum intervenir son et image. Pourtant, l'image étant la modalité qui permet la plus grande réception d'information, dans un premier temps, il est possible de restreindre cette qualité d'usage à la seule qualité visuelle.
+
+Sans faire appel aux techniques de compression d'information, diffuser de la télévision haute définition entrelacée nécessite le transport d'un flux vidéo d'environ 800 Mbps. C'est environ cinq fois plus que la télévision standard (TVSD). La compression est donc indispensable à la mise en place d'un tel service. Les débits visés pour la diffusion sont de l'ordre de 10 Mbps. Il faut donc réduire de façon très importante la quantité d'information à transmettre d'un facteur d'au moins 80. La première génération de TVHD actuellement utilisée aux États-Unis ou au Japon utilise la norme de compression MPEG-2. Pour sa généralisation en Europe, il est prévu d'utiliser la norme \avc, aussi appelée MPEG-4/AVC \emph{(Advanced Video Coding)}. Plus récente et plus performante que MPEG-2, celle-ci permet de diviser par deux les débits sortie d'un codage MPEG-2 à qualité visuelle équivalente. Évidemment, une telle compression des données affecte quelque peu le rendu visuel. En effet, les techniques de compression sans perte ne réduisent le débit que d'un facteur deux environ, taux de compression très insuffisant. Il faut se résoudre à utiliser, comme le font MPEG-2 et MPEG-4/AVC, des techniques de compression avec pertes. Étant donnés les taux de compression utilisés, les distorsions dues à la compression deviennent visibles. La qualité visuelle de l'image est donc affectée. La perte d'information est alors perçue par l'observateur comme l'apparition de phénomènes dégradants spatiaux et temporels non réalistes. Une technique de mesure de la qualité visuelle doit pouvoir convertir le jugement de ces dégradations en une estimation quantitative. Deux voies sont possibles pour réaliser cela. La première est de faire intervenir des observateurs humains dont la tâche est d'évaluer des séquences lors de tests subjectifs. La seconde est de concevoir et développer une méthode qui modélise le jugement humain de manière automatique.
+
+
+\subsection*{Jugement humain, évaluation subjective et tests psychophysiques}
+La première partie de nos travaux s'intéresse à la problématique de l'évaluation subjective de la qualité visuelle dans le contexte de la télévision numérique haute définition. Il existe plusieurs méthodologies d'évaluation de cette qualité, dont certaines sont normalisées. Cependant, ces normes sont adaptées à la télévision au format standard (TVSD) et ne prennent pas en compte les changements induits par la télévision haute définition. Dans ce contexte particulier, la qualité visuelle proposée par la TVHD doit être sensiblement supérieure à celle de la TVSD. Proche de l'excellence, elle se situe dans une gamme de valeurs très réduite. Le choix d'une méthodologie d'évaluation est donc crucial car elle doit être capable de fournir une mesure précise. Le problème est de sélectionner la méthodologie la plus adaptée au contexte, suivant les impératifs de précision requis.
+
+Les méthodologies existantes sont globales, dans la mesure où les observateurs fournissent une évaluation de la qualité visuelle d'une séquence dans son ensemble. Des approches plus originales permettent de proposer des méthodologies plus fines. Par exemple, Farias~\cite{farias-phd} évalue une séquence en distinguant les types de dégradations subies lors du codage. Cela permet de découper la problématique et de concevoir une méthodologie d'évaluation par parties. Les deux points déterminant la pertinence de l'approche sont alors la réalisation des évaluations partielles et leur cumul en une évaluation globale.
+
+\bigskip
+
+La nécessité de proposer un service de qualité sensiblement supérieure à celui offert par la TVSD est également motivée par le fait que les deux systèmes vont devoir cohabiter pendant un temps de transition de quelques années. Le succès du déploiement d'un service de TVHD est conditionné au fait que les observateurs le préfère significativement à la TVSD. Assurer une telle préférence n'est pas trivial étant donnée la quantité d'information à transmettre et les dégradations visuelles imputables à l'étape de compression. Il convient donc d'envisager des moyens efficaces de mesure de cette préférence entre TVSD et TVHD, ce qui est un aspect non traité dans la littérature.
+
+Enfin, les technologies d'affichage sont également en pleine mutation. Les écrans plats de technologie LCD \emph{(Liquid crystal display)}, plasma ou PDP \emph{(Plasma display panel)} sont aujourd'hui les seuls considérés pour la diffusion de la TVHD en Europe. Exploitée depuis les débuts de la télévision, la technologie CRT ne sera pas utilisée, en raison de son fort encombrement et de sa gamme de luminosité réduite. Cependant, le temps de réponse des écrans plats et certains défauts de restitution inhérents à chaque technologie ont un impact important sur la perception de la qualité. Par exemple, le mouvement sur un écran LCD s'accompagne d'un flou visuel caractéristique.
+
+% \bigskip
+% Ces aspects ont fait l'objet d'études et de tests dans la première partie de nos travaux. Notamment, cela a permis de construire une base de séquences haute définition accompagnées de leur notes de qualité. Une telle base sert de réalité terrain pour évaluer et paramétrer des métriques objectives de la qualité visuelle. Avant nos travaux, aucune base de ce type n'était à la disposition de la communauté scientifique.
+
+
+\subsection*{Modélisation de la qualité, métriques objectives et validation de critères}
+Avant même la réalisation d'une métrique objective de qualité vidéo, il convient de s'interroger sur la manière d'évaluer ses capacités à prédire le jugement humain. Pour cela, il existe des indicateurs de performance basés sur la mesure de précision, de monotonie ou de cohérence. Cependant, peu d'auteurs fournissent plus de deux ou trois de ces indicateurs pour leurs métriques. Cela ne permet pas de situer ses propres performances par rapport aux différentes approches existantes. De plus, la comparaison d'indicateurs est rarement considérée de manière statistique, c'est-à-dire en définissant une mesure de précision prenant en compte le nombre de séquences utilisées. La deuxième partie de nos travaux propose tout d'abord d'aborder cette problématique. %nous doter d'indicateurs de performance et de moyens de mesurer la signifiance d'écarts entre indicateurs. Elle permettra également de situer nos travaux par rapport à deux métriques connues et performantes en TVSD, que nous avons évaluées dans un contexte de TVHD. La première est une adaptation à la vidéo du critère pour images fixes SSIM~\cite{wang-vqasdm}, très utilisé dans le monde universitaire. La seconde est le critère VQM de Wolf et Pinson~\cite{wolf-vqmtech}, plus connue des instances de normalisation.
+
+Nous nous intéresserons ensuite à la conception de métriques objectives de qualité visuelle, aussi appelées critères objectifs. Il en existe un grand nombre dans la littérature. Pourtant, aucun d'eux n'a été spécifiquement conçu pour la télévision haute définition. Différentes stratégies de conception sont possibles. Hormis les approches purement mathématiques comme le rapport signal à bruit crête (PSNR), les plus anciennes sont basées sur la modélisation du système visuel humain. Bien qu'attirante, cette approche trouve ses limites dans le manque de considérations haut niveau. Plus récentes, les approches basées sur la mesure de dégradations considèrent les impacts du codage. Plus gourmandes en ressources, ces approches connaissent un certain succès, notamment grâce à VQM. Nous apporterons plusieurs contributions à ce domaine dans le deuxième partie de nos travaux.%L'un des critères que nous proposons est basé sur ce principe. Le second est fondé à la fois sur le débit utilisé par le codeur et sur l'extraction de caractéristiques obtenue par une analyse du contenu. Tous les critères que nous proposons sont évalués par rapport à VQM et VSSIM grâce aux indicateurs de performance définis.
+
+
+%%% plan
+\subsection*{Organisation du mémoire}
+Comme le reflète le titre de la thèse, ce mémoire est composé de deux parties. La première, composée des chapitres 1 à 3, traite de l'évaluation subjective de la qualité visuelle dans un contexte de télévision haute définition. La seconde, composée des chapitres 4 à 7, est le pendant objectif de cette évaluation, où nous présentons les critères conçus.
+
+\bigskip
+
+Le chapitre~\ref{chap:evalSubj} traite des différentes méthodologies d'évaluation subjective de la qualité vidéo, classées suivant la grandeur qu'elles mesurent. Nous les comparerons afin de déterminer des différences structurelles et opératoires. Nous introduirons également différents outils permettant d'analyser les résultats récoltés lors de tests psychophysiques. Enfin, nous présenterons quelques applications de ce type de méthodologie à la télévision haute définition.
+
+Le chapitre~\ref{chap:QoEinTVHD} pose d'abord la problématique de la mesure de qualité visuelle dans notre contexte spécifique. Puis, nous étudierons l'impact de la méthodologie d'évaluation subjective sur les résultats obtenus. Ensuite, les deux formats de télévision numériques simple (TVSD) et haute définition (TVHD) seront comparés afin d'analyser l'impact de la transition du premier au second. Enfin, nous mettrons en évidence l'influence de l'affichage utilisé sur la qualité perçue.
+
+Le chapitre~\ref{chap:methode} propose la conception d'une méthodologie d'évaluation de l'impact d'un système dégradant sur la qualité visuelle. Nous y décrirons l'approche adoptée, sa réalisation pratique et les résultats obtenus. %Nous exploiterons ensuite la méthodologie pour modéliser le cumul de pertes de qualité locales.
+
+% \bigskip
+
+Le chapitre~\ref{chap:criteres} débute la seconde partie par un état de l'art sur les critères objectifs de qualité vidéo. Nous utiliserons une classification de haut niveau pour les distinguer et montrer intérêts et défauts de chaque approche.
+
+Le chapitre~\ref{chap:evalCrit} répond dans un premier temps à la problématique de la validation des critères de qualité. Pour cela, nous proposerons l'usage de plusieurs indicateurs de performance. Puis, nous présenterons l'évaluation de deux critères de qualité connus sur une base de séquences haute définition. Le premier est une adaptation à la vidéo du critère pour images fixes SSIM~\cite{wang-vqasdm}. Le second est le VQM de Wolf et Pinson~\cite{wolf-vqmtech}.
+
+Enfin, les chapitres~\ref{chap:MQV1} et~\ref{chap:modeleDistorsionsTubes} présentent nos critères objectifs de qualité vidéo. Tous exploitent différents résultats de l'approche proposée au chapitre~\ref{chap:methode}. Nous chercherons notamment à valider l'une des techniques proposées dans une application concrète. Les performances de ces critères seront évaluées et comparées à celles obtenues par les critères évalués au chapitre~\ref{chap:evalCrit}.
+
+
+% \ornementChapitre

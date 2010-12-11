@@ -1,0 +1,38 @@
+% schéma du tube dans une image
+
+\draw[help lines, dashed] (1.1,-3) -- (21.8,-3);
+\draw[help lines, dashed] (2.1,-2.5) -- (22.9,-2.5);
+\draw[help lines, dashed] (2.1,-1) -- (22.9,-1);
+
+\filldraw[help lines, fill=blue!20] (1.1,-3) -- (2.1,-2.5) --  (2.1,-1) -- (1.1,-1.5) -- cycle;
+\filldraw[help lines, fill=blue!20] (6.3,-3) -- (7.3,-2.5) --  (7.3,-1) -- (6.3,-1.5) -- cycle;
+\fill[fill=blue!20] (11.5,-3) -- (12.5,-2.5) --  (12.5,-1) -- (11.5,-1.5) -- cycle;
+\filldraw[help lines, fill=blue!20] (16.7,-3) -- (17.7,-2.5) --  (17.7,-1) -- (16.7,-1.5) -- cycle;
+\filldraw[help lines, fill=blue!20] (21.9,-3) -- (22.9,-2.5) --  (22.9,-1) -- (21.9,-1.5) -- cycle;
+
+\draw[help lines, dashed] (1.1,-1.5) -- (21.9,-1.5);
+
+
+% \begin{tikzpicture}[scale=0.5]
+\foreach \i in {0.25,0.75,1.25,1.75} % grille sur l'image centrale
+{
+	\draw (10+2*\i,\i) -- (10+2*\i,-6+\i);
+	\draw (10,-3*\i) -- (14,2-3*\i);
+
+	\foreach \j in {0,1,3,4} % grille sur les autres images
+	{
+		\draw (5*\j + 2*\i, \i) -- (5*\j + 2*\i, -6 + \i);
+		\draw (5*\j,-3*\i) -- (5*\j + 4,2-3*\i);
+	}
+}
+
+\draw (2,-6.5) node{$i-2$};
+\draw (7,-6.5) node{$i-1$};
+\draw (12,-6.5) node{image $i$};
+\draw (17,-6.5) node{$i+1$};
+\draw (22,-6.5) node{$i+2$};
+
+\draw[<->] (12,2) -- (22,2) node[above,pos=0.5] {80 ms};
+\draw[<->] (2,3) -- (22,3) node[above,pos=0.5] {tube};
+
+% \end{tikzpicture}

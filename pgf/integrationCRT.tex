@@ -1,0 +1,19 @@
+\filldraw[fill=blue!30] (0,0.5) rectangle (0.05,1.5);
+\filldraw[fill=blue!30] (1,0.8) rectangle (1.05,1.8);
+\filldraw[fill=blue!30] (2,1.1) rectangle (2.05,2.1);
+
+\draw[->] (0,0) -- (4,0) node[below] {temps} coordinate(x axis);
+\draw[->] (0,0) -- (0,2.5) node[above] {espace} coordinate(y axis);
+\draw (0, -0.2) node{$i$};
+\draw (1,-0.2) node{$i+1$};
+\draw (1,0) -- (1,0.1);
+\draw (2,-0.2) node{$i+2$};
+\draw (2,0) -- (2,0.1);
+\draw (3,-0.2) node{$i+3$};
+\draw (3,0) -- (3,0.1);
+
+\draw[help lines,->] (0,1.5) -- (4,2.7);
+\draw[help lines,->] (0,0.5) -- (4,1.7);
+
+\filldraw[fill=blue!30] (4,2.7) -- (4,1.7) -- (4.2,1.75) -- (4.2,2.65) -- cycle;
+\draw (4,3) -- (4,1.4) node[below]{intégration};

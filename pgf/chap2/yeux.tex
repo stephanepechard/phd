@@ -1,0 +1,10 @@
+% schéma sur la distance d'observation des images QHD dans HDvsSD
+
+\begin{tikzpicture}[auto,scale=0.5]
+	\pgfdeclareimage[interpolate=true,height=9cm]{mobcal}{img/chap2/mobcal_h264_12d_SDpitit} % déclaration de l'image
+	\pgftext[at=\pgfpoint{0cm}{0cm},left,base]{\pgfuseimage{mobcal}}
+
+	\draw (0,9) -- node[anchor=east] {$O=3H=6h$} (-9,-9) -- (16,0);
+	\draw [<->,latex-latex] (18,9) -- node {$H$} (18,0);
+	\draw [<->,latex-latex] (16.5,6.75) -- node {$h$} (16.5,2.25);
+\end{tikzpicture}%ici la figure

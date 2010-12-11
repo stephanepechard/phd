@@ -1,0 +1,30 @@
+% \begin{tikzpicture}
+
+\fill[top color=white, bottom color=red!50] (0,0) rectangle (2,2);
+\fill[bottom color=white,top color=blue!50] (1,0) rectangle (3,-2);
+\fill[top color=white,bottom color=green!50] (2,0) rectangle (4,2);
+\fill[bottom color=white,top color=yellow!50] (3,0) rectangle (5,-2);
+\fill[top color=white,bottom color=black!50] (4,0) rectangle (6,2);
+\fill[bottom color=white,top color=red!50] (5,0) rectangle (7,-2);
+\fill[top color=white,bottom color=blue!50] (6,0) rectangle (8,2);
+\fill[bottom color=white,top color=green!50] (7,0) rectangle (9,-2);
+\fill[top color=white,bottom color=yellow!50] (8,0) rectangle (10,2);
+
+\draw[help lines] (10,0) -- (10,2);
+\foreach \x in {0,2,4,6,8} {
+	\draw[help lines] (\x,0) -- (\x,2);
+	\draw[help lines] (\x+1,0) -- (\x+1,-2);
+	\node at (\x+1,1.5) {$T'_\x$};
+}
+\node at (2,-1.5) {$T'_1$};
+\node at (4,-1.5) {$T'_3$};
+\node at (6,-1.5) {$T'_5$};
+\node at (8,-1.5) {$T'_7$};
+
+\draw (0,0) -- (10,0);
+\foreach \x in {0,1,2,3,4,5,6,7,8,9,10} {
+	\draw (\x,0.1) -- (\x,-0.1) node[above=0.2cm] {\x};
+}
+
+
+% \end{tikzpicture}

@@ -1,0 +1,12 @@
+% \begin{tikzpicture}[text centered]
+% Place nodes
+	\node[text width=2cm] (ref) {séquence originale};
+	\node[action, right of=ref, text width=3cm, node distance = 3.5cm] (mesure) {mesure des erreurs locales};
+	\node[action, right of=mesure] (cumul) {cumul};
+	\node[right of=cumul, node distance = 2cm] (note) {note};
+
+% Draw edges
+	\path[fleche] (ref) -- (mesure);
+	\path[fleche] (mesure) -- (cumul);
+	\path[fleche] (cumul) -- (note);
+% \end{tikzpicture}

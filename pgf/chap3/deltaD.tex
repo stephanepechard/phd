@@ -1,0 +1,27 @@
+\clip (-0.15,-0.15) rectangle (2,2);
+
+\fill[fill=black!20] (0,0) -- (22:1.6) arc (22:68:1.6) node[below right=20pt,text width=1cm,text centered] {$C'_5$};
+
+\fill[fill=green!20] (0,0) -- (0:1.1) arc (0:90:1.1);
+\draw[thick] (1.1,0) arc (0:90:1.1);
+
+\fill[fill=blue!20] (0,0) -- (68:1.6) arc (68:90:1.6) node[below right=5pt,text width=1cm,text centered] {$C'_4$};
+\fill[fill=blue!20] (0,0) -- (0:1.6) arc (0:22:1.6)  node[below=20pt,text width=2cm,text centered] {$C'_4$};
+\draw[thick] (0,0) -- (68:1.8);
+\draw[thick] (0,0) -- (22:1.8);
+
+\fill[fill=green!20] (0,0) -- (0:0.8) arc (0:90:0.8);
+\draw (0.7,0.7) node {$C'_3$};
+\draw[thick] (0.8,0) arc (0:22:0.8);
+\draw[thick] (0,0.8) arc (90:68:0.8);
+
+\fill[fill=yellow!20] (0,0) -- (0:0.6) arc (0:90:0.6);
+\draw (0.35,0.25) node[text width=2cm] {($C'_1\bigcup C'_2$)};
+\draw[thick] (0.6,0) arc (0:90:0.6);
+
+\draw[thick, ->] (-1.7,0) -- (1.7,0) node[right] {$\overline{\Delta D_{45}}$};
+\draw[thick, ->] (0,-1.7) -- (0,1.7) node[above] {$\overline{\Delta D_{135}}$};
+
+\draw (0.6,-0.08) node{$Y_1$};
+\draw (0.8,-0.08) node{$Y_2$};
+\draw (1.1,-0.08) node{$Y_3$};

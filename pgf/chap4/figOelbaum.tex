@@ -1,0 +1,29 @@
+% \begin{tikzpicture}[text centered, node distance = 3cm]
+% Place nodes
+	\node[text width=1.5cm] (ref) {séquence originale};
+	\node[action, right of=ref, node distance = 2.2cm] (codage) {codage};
+	\node[right of=codage, text width=2cm, node distance = 2.5cm] (deg) {séquence dégradée};
+	\node[below of=deg, node distance = 2cm, text width=2cm, node distance = 2.5cm] (seqBas) {séquence de basse qualité};
+	\node[below of=seqBas, node distance = 2cm, text width=2cm, node distance = 2.5cm] (seqHaut) {séquence de haute qualité};
+	\node[action, right of=deg, text width=1.5cm] (critDeg) {critère de qualité};
+	\node[action, right of=seqBas, text width=1.5cm] (critBas) {critère de qualité};
+	\node[action, right of=seqHaut, text width=1.5cm] (critHaut) {critère de qualité};
+	\node[below of=critBas, node distance = 1cm] (tmp) {};
+	\node[action, right of=tmp, text width=3cm, rotate=90, node distance = 3.2cm] (regression) {régression};
+	\node[action, right of=critDeg, node distance = 3.2cm] (correction) {correction};
+	\node[right of=correction, node distance = 2cm] (psnr) {$\mathit{PSNR}^+$};
+
+% Draw edges
+	\path[fleche] (ref) -- (codage);
+	\path[fleche] (codage) -- (deg);
+	\path[fleche] (deg) -- (critDeg);
+	\path[fleche] (codage) |- (seqBas);
+	\path[fleche] (seqBas) -- (critBas);
+	\path[fleche] (codage) |- (seqHaut);
+	\path[fleche] (seqHaut) -- (critHaut);
+	\path[fleche] (critBas) -- (regression) node[above=2pt,pos=0.5] {$\mathit{PSNR}_b$};
+	\path[fleche] (critHaut) -- (regression) node[below=4pt,pos=0.5] {$\mathit{PSNR}_h$};
+	\path[fleche] (critDeg) -- (correction) node[above,pos=0.5] {PSNR};
+	\path[fleche] (regression) -- (correction) node[right,pos=0.5] {$\mathit{slope, offset}$};
+	\path[fleche] (correction) -- (psnr);
+% \end{tikzpicture}

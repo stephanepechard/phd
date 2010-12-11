@@ -1,0 +1,41 @@
+% schéma de la transformation YCbCr vers ACr1Cr2
+
+% Place nodes
+\node[text width=3em] (ycbcr) {données YCbCr};
+\node[action, right of=ycbcr, text width=6em, node distance=2.5cm] (ycbcr2rgb) {transformation YCbCr$\Rightarrow$RGB};
+\node[action, right of=ycbcr2rgb, node distance=3.5cm,text width=2.8em] (ecran) {écran};
+\node[action, right of=ecran, text width=1.5cm, node distance=4cm] (oeil) {système visuel humain};
+\node[right of=oeil, node distance=2.6cm,text width=6em] (apres) {luminances et chrominances perceptuelles};
+
+\path[fleche] (ycbcr) -- (ycbcr2rgb);
+\path[fleche] (ycbcr2rgb) -- (ecran) node[pos=0.5,text width=1.5cm] {données RGB};
+\path[fleche] (ecran) -- (oeil) node[pos=0.5,text width=2cm] {luminances physiques};
+\path[fleche] (oeil) -- (apres) node[pos=0.5,text width=5cm] {};
+
+
+% \node (testsSVT2006) {\textbf{SVT2006}};
+% \node [left of=testsSVT2006, node distance=4cm] (testsEuro1080) {\textbf{Euro1080}};
+% \node [left of=testsSVT2006, node distance=8cm] (testsSVT) {\textbf{SVT}};
+%
+% \node [below of=testsSVT2006, text width=8em] (svt2006Fichiers) {fichiers YCbCr 422 sur Y:[16;235] U,V:[16;240]};
+% \node [below of=testsEuro1080, text width=3cm] (euroFichiers) {fichiers YCbCr 422 sur [0;255]};
+% \node [below of=testsSVT, text width=3cm] (svtFichiers) {fichiers YCbCr 422 sur [0;255]};
+%
+% \node [action, below of=euroFichiers] (doremi) {conversion 422$\Rightarrow$RGB};% Dorémi (BT.709 en 422)};
+% \node [action, below of=doremi, node distance=1.5cm] (ecran) {écran};
+% \node [action, below of=ecran] (oeil) {système visuel humain};
+% \node [below of=oeil] (apres) {luminances perceptuelles};
+%
+% \node [action, below of=svtFichiers] (420422) {conversion 420$\Rightarrow$422};
+%
+%
+% \path [fleche] (doremi) -- (ecran) node[right, pos=0.5,text width=2.2cm] {flux RGB};
+% \path [fleche] (ecran) -- (oeil) node[right, pos=0.5,text width=4cm] {luminances physiques};
+% \path [fleche] (oeil) -- (apres) node[right, pos=0.5,text width=5cm] {};
+%
+% \path [fleche] (svt2006Fichiers) |- (doremi);
+%
+% \path [fleche] (euroFichiers) -- (doremi);
+%
+% \path [fleche] (svtFichiers) -- (420422);
+% \path [fleche] (420422) -- (doremi);

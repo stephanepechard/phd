@@ -1,0 +1,22 @@
+\filldraw[fill=blue!30] (0,0.5) rectangle (1,1.5);
+\filldraw[fill=blue!30] (1,0.8) rectangle (2,1.8);
+\filldraw[fill=blue!30] (2,1.1) rectangle (3,2.1);
+
+\draw[->] (0,0) -- (4,0) node[below] {temps} coordinate(x axis);
+\draw[->] (0,0) -- (0,2.5) node[above] {espace} coordinate(y axis);
+\draw (0, -0.2) node{$i$};
+\draw (1,-0.2) node{$i+1$};
+\draw (1,0) -- (1,0.1);
+\draw (2,-0.2) node{$i+2$};
+\draw (2,0) -- (2,0.1);
+\draw (3,-0.2) node{$i+3$};
+\draw (3,0) -- (3,0.1);
+
+\draw[help lines,->] (0,1.5) -- (4,2.7);
+\draw[help lines,->] (0,0.2) -- (4,1.4);
+
+\filldraw[fill=blue!30] (4,2.7) -- (4,1.4) -- (4.2,1.75) -- (4.2,2.45) -- cycle;
+\draw[help lines,dashed] (0,0.5) -- (4.5,1.85);
+\draw[help lines,dashed] (0,1.2) -- (4.5,2.55);
+
+\draw (4,3) -- (4,1) node[below]{intégration};

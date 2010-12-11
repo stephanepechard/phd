@@ -1,0 +1,18 @@
+% \begin{tikzpicture}[text centered, text width=2cm, node distance=2cm]
+	\node[text width=1.5cm] (seq) {séquence};
+	\node[action, right of=seq, node distance=2.5cm] (seg) {segmentation temporelle};
+	\node[action, right of=seg, node distance=3cm] (classif) {classification};
+	\node[action, below of=seq, node distance=2.6cm, text width=1.5cm] (codage) {codage H.264};
+	\node[action, right of=codage, node distance=3cm, text width=2.5cm] (gene) {génération des séquences partiellement dégradées};
+	\node[action, right of=gene, node distance=3cm] (eval) {évaluation subjective};
+	\node[action, right of=eval, node distance=3cm, text width=2cm] (cumul) {cumul des évaluations locales};
+	\node[right of=cumul, node distance=3cm, text width=1.5cm] (mos) {mesure globale de qualité};
+	\draw[fleche] (seq) -- (seg);
+	\draw[fleche] (seq) -- (codage);
+	\draw[fleche] (seg) -- (classif);
+	\draw[fleche] (codage) -- (gene);
+	\draw[fleche] (classif) -- (gene) node[pos=0.5,right, text width=3cm] {séquences de classes};
+	\draw[fleche] (gene) -- (eval);
+	\draw[fleche] (eval) -- (cumul);
+	\draw[fleche] (cumul) -- (mos);
+% \end{tikzpicture}

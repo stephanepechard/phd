@@ -1,0 +1,28 @@
+% \begin{tikzpicture}
+\node[text width=1.4cm] (ref) {vidéo de référence};
+\node[right of=ref] (refBis) {};
+\node[action,right of=refBis,node distance=1.8cm] (convRef) {conversion vers 4$:$4$:$4};
+\node[below of=ref,node distance=1cm] (tmp) {};
+\node[below of=tmp,node distance=2cm,text width=1.4cm] (deg) {vidéo dégradée};
+\node[action,right of=deg,node distance=2.4cm] (convDeg) {conversion vers 4$:$4$:$4};
+
+\node[action, right of=convDeg,text width=1.5cm,node distance=2.4cm] (ssim) {calcul SSIM};
+\node[action, right of=ssim,node distance=3.1cm] (cumulImage) {cumul sur l'image $i$};
+\node[action, right of=cumulImage,node distance=2.8cm] (cumulSeq) {cumul sur la séquence};
+\node[right of =cumulSeq,text width=1.2cm,node distance=2.15cm] (vssim) {VSSIM};
+\node[action, above of=cumulImage,node distance=2cm] (calculw) {calcul de $w_{\mathit{ij}}$};
+\node[action, right of=calculw,node distance=2.8cm] (calculW) {calcul de $W_i$};
+
+\path[fleche] (ref) -- (convRef);
+\path[fleche] (convRef) -| (calculw) node[right=-0.2cm, pos=0.7] {luminance};
+\path[fleche] (calculw) -- (cumulImage) node[right=-0.8cm,pos=0.5] {$w_{\mathit{ij}}$};
+\path[fleche] (calculW) -- (cumulSeq) node[right=-0.8cm,pos=0.5] {$W_i$};
+\path[fleche] (deg) -- (convDeg);
+\path[fleche] (convDeg) -- (ssim);
+\path[fleche] (ssim) -- (cumulImage) node[below,pos=0.5] {$\text{SSIM}_{\mathit{ij}}$};
+\path[fleche] (cumulImage) -- (cumulSeq) node[below,pos=0.5] {$Q_i$};
+\path[fleche] (cumulSeq) -- (vssim);
+\path[fleche] (convRef) -- (ssim);
+\path[fleche] (convRef) -| (calculW) node[right,pos=0.7] {vecteurs de mouvement};
+
+% \end{tikzpicture}

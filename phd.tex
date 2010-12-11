@@ -1,0 +1,314 @@
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%% Auteur : Stéphane Péchard - stephane.pechard@univ-nantes.fr
+%%% Fichier : phd.tex - ma thèse (version de travail)
+%%% Version : 0.1
+%%% Date : 2006/03/27 (début)
+%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\RequirePackage[note, nofinal]{optional}
+% note		affichage des notes en bas de page
+% nofinal	enlève les trucs de la version finale
+% final		ajoute tous les flonflons pour la version finale
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Déclaration
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper, frenchb, pdftex, 11pt, oneside]{book} %\raggedbottom
+\input{makeat} % bidouillages en tout genre
+
+
+% \includeonly{7-modClassif}
+% introduction, 0-contextePbTVHD, 1-testsub, 2-HDContexteQual, 3-evalImpactSysDegsurQual, bilan1, 4-metriques, 5-eval, 6-modQualVid, 7-modClassif, bilan2, conclusion, a-base
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Packages de programmation
+% \usepackage{ifpdf}
+% \usepackage{etex}
+% \usepackage{calc}
+% \usepackage{ifthen}
+% \usepackage{ifmtarg}
+
+%% Packages primordiaux
+\usepackage[utf8]{inputenc}															% codage d'entrée (tout le document en dépend)
+\usepackage[LY1]{fontenc}															% codage de la fonte
+\shutup \usepackage{fourier} \youcanspeak									% pour les maths (avec suppression des warnings) !! À mettre avant lmodern ou garamond !!
+\usepackage{agaramondpro}															% la famille de fonte dépend du codage
+\usepackage[kerning=true,babel=true]{microtype}
+\usepackage{textcomp}																	% dépend de la famille de la fonte
+\usepackage{setspace}																	% interlignage
+\usepackage[pdftex, headheight=15.91pt]{geometry}					% taille du papier (peut dépendre de l'interlignage par l'option lines=... TODO
+\usepackage{fancyhdr}																	% dépend du papier
+% \usepackage{floatrow}
+
+% \renewcommand*{\textbf}[1]{\textsb{#1}}
+% \renewcommand*{\bfseries}{\sbweight}
+
+
+
+%% Zone floue
+% math
+\usepackage{amsmath}  	 															% math
+\usepackage{amssymb}																	% symboles
+\usepackage{amsfonts}																	% fontes
+\usepackage{array}																		% tableaux en mode math
+\usepackage{multirow}																	% pour les tableaux
+\usepackage{mathtools}																% amélioration de amsmath
+
+% déco
+\usepackage{tikz}																			% jolis graphiques ;-)
+\usetikzlibrary{arrows,patterns,plotmarks,backgrounds,shapes,er,shadows}	% librairies
+\usepackage{pgfplots}																	% jolis graphes ;-)
+
+% layout
+\usepackage[center, labelsep=endash]{caption}							% avant subfig
+\usepackage{subfig}																		% plusieurs figures en une seule (remplace subfigure)
+\usepackage{pdfpages}																	% inclusion de pdf
+\usepackage{wrapfig}																		% pour insérer des images au long
+\usepackage[nottoc]{tocbibind}
+\usepackage{colortbl}
+\usepackage{booktabs}
+\setlength{\heavyrulewidth }{0.2 em} % \lightrulewidth
+
+% \usepackage{titlesec}
+% \usepackage{titletoc}
+% \usepackage{makeidx}
+% \usepackage{index}
+% \usepackage{float}
+% \usepackage{fancyvrb}
+
+% utile
+\usepackage{lastpage}																	% permet de connaitre le numéro de la dernière page
+% \usepackage{fancybox}																% des boiboites
+\usepackage{eurosym}																	% \eurologo (de fourier)
+% \usepackage{listings}																	% affichage de code
+% \usepackage{lipsum}
+% \usepackage{verbatim}
+% \usepackage{url}
+% \usepackage[utopia]{quotchap}													% affiche une citation à chaque chapitre (change aussi l'allure de l'en-tête de chapitre)
+
+%% nomenclature (liste des symboles)
+% \usepackage[intoc, french, noprefix]{nomencl}
+% \renewcommand{\nomname}{Système de notation}
+% \renewcommand{\nompreamble}{Voici le système de notation utilisé dans ce document.}
+%
+% \renewcommand{\nomgroup}[1]{%
+% \item[]\hspace*{-\leftmargin}%
+% \rule[2pt]{0.45\linewidth}{1pt}%
+% \hfill
+% \ifthenelse{\equal{#1}{S}}{\textbf{Symboles}}
+% {\ifthenelse{\equal{#1}{I}}{\textbf{Indices}}{}}
+% \hfill
+% \rule[2pt]{0.45\linewidth}{1pt}}
+%
+% \makenomenclature
+
+%% babel et trucs de  langue
+% \usepackage[autolanguage]{numprint}
+\usepackage[english]{babel}
+\usepackage[babel]{csquotes}
+\MakeAutoQuote{«}{»}
+
+\newcommand{\montitre}{Qualité d'usage en télévision haute définition : évaluation subjective et métriques objectives}
+
+
+%% hyperref et trucs pdf (avec ifpdf mais ne marche plus on dirait)
+\usepackage{graphicx}  % Graphiques internes et externes
+\usepackage[pdftex, pdfpagelabels, pagebackref]{hyperref}
+
+\hypersetup{% TODO à revoir
+	colorlinks=false, %colorise les liens
+	breaklinks=true, %permet le retour à la ligne dans les liens trop longs
+	urlcolor= blue, %couleur des hyperliens
+	linkcolor= blue, %couleur des liens internes
+	bookmarksopen=true, %si les signets Acrobat sont créés, les afficher complètement.
+	hypertexnames=true,
+	plainpages=true,
+	pdftitle={\montitre},
+	pdfauthor={Stéphane Péchard},
+	pdfsubject={résumé}
+	pdfkeywords={},
+	pdfcreator={\LaTeXe}
+	pdfproducer={Stéphane Péchard}
+}
+\usepackage[all]{hypcap}
+
+%% glossaire
+% \usepackage[number=none, header=plain, hypertoc=true, hyper=true]{glossary} % style=altlist !!!! à placer après hyperref !!!!
+% \renewcommand{\glossaryname}{Acronymes et abbréviations}
+% \renewcommand{\glossarypreamble}{Les acronymes et autres abbréviations présents dans cet ouvrage trouvent leurs expansions verbeuses dans ces quelques pages.\par}
+% \makeglossary
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Commandes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\ornementChapitre}{\opt{final}{\begin{center}\begin{Large}\textorn{2}\end{Large}\end{center}}}
+
+%% centrage des colonnes sur plusieurs lignes
+\renewcommand\multirowsetup{\centering}
+
+%% création d'un type de colonne centrée de largeur 1.5
+\newcolumntype{D}{>{\centering}p{1.5cm}}
+
+%% notes dans la marge
+\newcommand{\note}[1]{\marginpar{%
+  \vskip-\baselineskip %raise the marginpar a bit
+  \raggedright\small
+  \color{black}{\hrule\smallskip#1}\par\smallskip\hrule}}
+\newcommand{\nonotes}{\renewcommand{\note}[1]{}}
+
+%% strong %%
+\DeclareRobustCommand{\strong}[1]{%
+\textbf{#1}%
+}
+
+%% dédicace %%
+\DeclareRobustCommand{\dedicace}[1]{%
+\clearemptydoublepage
+\thispagestyle{empty}
+\vspace*{\stretch{1}}\par
+{\begin{flushright}\emph{#1}\end{flushright}\par}
+\vspace*{\stretch{2}}
+}
+
+%% sur-paragraphe (ligne entre deux groupes de paragraphes) %%
+\DeclareRobustCommand{\surparagraph}{%
+\par\medskip
+}
+
+%% H.264/MPEG-4 AVC %%
+\newcommand\avc{H.264}
+\newcommand\ituCC{ITU-R BT.500-11~\cite{itu-bt500-11}}
+\newcommand\ituNfDx{ITU-T P.910~\cite{itu-bt910}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Paramétrages du document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% url dans la même police que le reste
+\urlstyle{rm}
+
+%% profondeur de la table des matières
+\setcounter{tocdepth}{2}
+% \setcounter{secnumdepth}{8}
+
+%% redéfinition des labels (tableaux, figures, etc.) % voir french.cfg
+\addto\captionsfrench{\def\figurename{Figure}}
+\addto\captionsfrench{\def\tablename{Tableau}}
+\addto\captionsfrench{\def\listfigurename{Table des illustrations}}
+
+%% définition des en-têtes et pieds de page
+\pagestyle{fancy}
+\fancyhf{} % on efface tout
+\fancyhead[RO]{\nouppercase{\emph{\rightmark}}}
+\fancyhead[L]{\nouppercase{\emph{\today}}}
+\fancyfoot[C]{\strong{--~\thepage~--}}
+
+
+%% on enlève le pied et l'en-tête d'une page paire vide
+\let\origdoublepage\cleardoublepage
+\newcommand{\clearemptydoublepage}{%
+  \clearpage
+  {\pagestyle{empty}\origdoublepage}%
+}
+\let\cleardoublepage\clearemptydoublepage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% On attaque le vif du sujet
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{\montitre}
+\author{Stéphane Péchard}
+\date{Version du \today}
+
+\begin{document}
+% on est en français
+\selectlanguage{frenchb}
+
+% éléments de tikz
+\input{pgf/tikzPhD}
+
+%% les entrées du glossaire
+\input{glossaire}
+\input{mathit} %% définition d'objets
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Numérotation romaine pour commencer
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frontmatter
+
+%% page de titre
+% \input{frontpage}
+
+%% on définit l'interligne pour tout le document
+% \doublespacing
+\onehalfspacing
+
+
+
+% \maketitle
+
+%% diverses tables
+% \tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Numérotation arabe
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mainmatter % numérotation arabe
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Le document, enfin !
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% introduction générale
+\include{introduction}
+
+% \include{0-contextePbTVHD}
+
+%% partie 1 - subjectif
+% \part{Évaluation subjective de la qualité visuelle en télévision haute définition} % TODO titre !
+\include{1-testsub}
+\include{2-HDContexteQual}
+\include{3-evalImpactSysDegsurQual}
+% \include{bilan1}
+
+
+%% partie 2 - objectif
+% \part{Critères objectifs de qualité vidéo en télévision haute définition} % TODO titre !
+\include{4-metriques}
+\include{5-eval}
+\include{6-modQualVid}
+\include{7-modClassif} % TODO à corriger
+% \include{bilan2}
+
+%% conclusion
+\include{conclusion}
+
+%% annexes
+% \addcontentsline{toc}{part}{Annexes}
+% \part*{Annexes}%\markboth{Annexes}{Annexes}		% titre TODO à mettre où il faut
+% \appendix
+% \input{a-base}
+% \input{b-transfoCouleur}
+
+%% mes publications
+% \include{publications}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Fin
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\backmatter
+
+%% bibliographie  % TODO : chaque référence doit être accompagnée des numéros de page où elle apparait !
+\nocite{*}
+\bibliographystyle{myBst} % myBst-letters
+\bibliography{biblioPhD}
+
+% \include{resumeLastPage}
+
+\end{document}

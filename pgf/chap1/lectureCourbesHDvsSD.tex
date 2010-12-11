@@ -1,0 +1,29 @@
+% comment lire les courbes HDvsSD
+
+% \begin{tikzpicture}[scale=2]
+	% The graphic
+	\filldraw[draw=red!30,fill=red!30] (0,0) rectangle (2.5,1);
+	\filldraw[draw=green!30,fill=green!30] (0,0) rectangle (-2.5,1);
+	\filldraw[draw=blue!30,fill=blue!30] (0,0) rectangle (2.5,-1);
+	\filldraw[draw=yellow!30,fill=yellow!30] (0,0) rectangle (-2.5,-1);
+
+ 	\draw[->] (-2.5,-1) -- (2.6,-1) node[below] {$\Delta$MOS} coordinate(x axis);
+ 	\draw[->] (-2.5,-1) -- (-2.5,1.2) node[above, text width=2cm, text centered] {préférence moyenne} coordinate(y axis);
+
+	\draw (-2.6,0) node{0};
+	\draw (0,-1.1) node{0};
+	\draw[dotted] (-2.5,0) -- (2.5,0);
+	\draw[dotted] (0,1) -- (0,-1);
+
+	\draw (2.5,0.9) node[left] {HD préférée};
+	\draw (2.5,0.7) node[left] {$MOS_{HD} > MOS_{SD}$};
+	\draw (-2.5,0.9) node[right] {HD préférée};
+	\draw (-2.5,0.7) node[right] {$MOS_{HD} < MOS_{SD}$};
+	\draw (2.5,-0.9) node[left] {SD préférée};
+	\draw (2.5,-0.7) node[left] {$MOS_{HD} > MOS_{SD}$};
+	\draw (-2.5,-0.9) node[right] {SD préférée};
+	\draw (-2.5,-0.7) node[right] {$MOS_{HD} < MOS_{SD}$};
+
+	\draw (2.5,0.05) node[left, blue]{isopréférence};% (image size)};
+	\draw (0,0) node[above, blue, rotate=90]{$MOS_{HD} = MOS_{SD}$};% (distortions)};
+% \end{tikzpicture}

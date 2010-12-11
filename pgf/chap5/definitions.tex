@@ -1,0 +1,16 @@
+\begin{tikzpicture}[node distance=3cm]
+\node (mos) {MS};
+\node[action, below of=mos, text width=2cm, node distance=1.7cm] (func) {fonction d'ajustement};
+\node[below of=func, node distance=1.7cm] (no) {NO};
+\node[right of=func] (mosp) {MSP};
+\node[action, right of=mosp, text width=2cm] (perf) {mesures de performance};
+\node[right of=perf] (mesures) {cc, reqm, or, etc.};
+
+\draw[fleche] (mos) -- (func);
+\draw[fleche] (no) -- (func);
+\draw[fleche] (func) -- (mosp);
+\draw[fleche] (mosp) -- (perf);
+\draw[fleche] (perf) -- (mesures);
+\draw[fleche] (mos) -| (perf);
+
+\end{tikzpicture}

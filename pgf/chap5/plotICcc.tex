@@ -1,0 +1,27 @@
+\begin{tikzpicture}[scale=6]
+	\node at (-0.02,-0.02) {0};
+	\draw[->] (0,0) -- (1.1,0) node[right] {cc};
+	\draw[->] (0,0) -- (0,1.1) node[above] {bornes};
+	\draw[dotted] (0,0) -- (1,1);
+
+	\foreach \x in {0.2,0.4,0.6,0.8,1}
+	{
+		\draw (\x,0) -- (\x,-0.01) node[anchor=north] {\x};
+		\draw (0,\x) -- (-0.01,\x) node[anchor=east] {\x};
+	}
+
+	\draw plot[smooth] file {plot/chap5/lhCC42};
+	\draw plot[smooth] file {plot/chap5/lbCC42};
+	\draw[densely dashed] plot[smooth] file {plot/chap5/lhCC168};
+	\draw[densely dashed] plot[smooth] file {plot/chap5/lbCC168};
+	\draw[loosely dashed] plot[smooth] file {plot/chap5/lhCC384};
+	\draw[loosely dashed] plot[smooth] file {plot/chap5/lbCC384};
+
+	\draw[legende] (0.1,0.8) rectangle (0.45,1.05);
+	\draw[thick] (0.12,1) -- (0.22,1) node[anchor=west] {$N_n$=42};
+	\draw[thick,densely dashed] (0.12,0.93) -- (0.22,0.93) node[anchor=west] {$N_n$=168};
+	\draw[thick,loosely dashed] (0.12,0.85) -- (0.22,0.85) node[anchor=west] {$N_n$=384};
+
+	\node at(0.5,0.1) {$cc_b$};
+	\node at(0.1,0.5) {$cc_h$};
+\end{tikzpicture}

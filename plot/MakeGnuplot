@@ -1,0 +1,1 @@
+gnuplot phd.gnuplot && for i in *.ps; do ps2pdf $i && rm $i; done

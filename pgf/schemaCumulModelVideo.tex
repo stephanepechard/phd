@@ -1,0 +1,15 @@
+% schéma global du modèle de qualité vidéo basé sur le calcul de distorsions intra-tubes
+
+\begin{tikzpicture}[node distance = 3.5cm, auto]
+    % Place nodes
+	\node (MdTube) {$\Md(k,l,T)$};
+	\node [action, right of=MdTube, text width=5em, node distance = 2.5cm] (cumulSpatial) {cumul spatial intra-tronçon};
+	\node [action, right of=cumulSpatial, text width=5em] (cumulID) {cumul inter-distorsions};
+	\node [action, right of=cumulID, text width=5em] (cumulTemp) {cumul temporel};
+	\node [right of=cumulTemp, node distance = 2cm] (Md) {$\Md$};
+    % Draw edges
+	\path [fleche] (MdTube) -- (cumulSpatial);
+    \path [fleche] (cumulSpatial) -- node {$\Md(l,T)$} (cumulID);
+	\path [fleche] (cumulID) -- node {$\Md(T)$} (cumulTemp);
+	\path [fleche] (cumulTemp) -- (Md);
+\end{tikzpicture}

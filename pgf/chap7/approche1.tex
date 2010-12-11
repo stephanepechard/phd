@@ -1,0 +1,23 @@
+% 	\begin{tikzpicture}[text centered, node distance=2cm] % , text width=2cm
+		\node[text width=1.9cm] (ref) {séquence de référence};
+		\node[right of = ref] (rightOfRef) {};
+		\node[action, right of = rightOfRef, text width=2cm, node distance=0.5cm] (seg) {segmentation spatio-temporelle};
+		\node[below of = seg, node distance=1.5cm] (belowOfSeg) {};
+		\node[action, right of = belowOfSeg, node distance=3.2cm, text width=2cm] (cons) {construction d'un paramètre de contrôle de la quantité de dégradations d'une classe};
+		\node[action, right of = cons, text width=1.5cm, node distance=2.4cm] (fGene) {fonction de gêne par classe};
+		\node[action, right of = fGene, node distance=2.3cm, text width=1.9cm] (cumul) {cumul inter-classes des pertes de qualité};
+		\node[right of = cumul, text width=1.5cm, node distance=2.3cm] (out) {note de qualité};
+
+		\node[action, below of = ref, text width=1.3cm, node distance=3cm] (mse) {calcul d'erreur};
+		\node[below of = mse, node distance=2cm, text width=1.5cm] (deg) {séquence dégradée};
+
+		\draw[fleche] (ref) -- (mse);
+		\draw[fleche] (deg) -- (mse);
+		\draw[fleche] (ref) -- (seg);
+		\draw[fleche] (seg) |- (cons) node[text width=3cm, pos=0.75] {vecteurs de mouvement};
+		\draw[fleche] (seg) -- node[pos=1,above =0.3cm] {proportions} (cons.west |- seg);
+		\draw[fleche] (mse) -- node[above] {erreur} (cons.west |- mse);
+		\draw[fleche] (cons) -- (fGene);
+		\draw[fleche] (fGene) -- (cumul);
+		\draw[fleche] (cumul) -- (out);
+% 	\end{tikzpicture}
